@@ -1,0 +1,6 @@
+global:
+  istioNamespace: service-mesh
+
+meshConfig:
+  ingressService: istio-gateway
+  ingressSelector: gateway

@@ -1,0 +1,5 @@
+appName: mocha-backend # This value was modified by the initial-setup python script
+
+deployment:
+  image:
+    repository: tferrari92/mocha-backend # This value was modified by the initial-setup python script

@@ -19,7 +19,10 @@
 
 <p title="All The Things" align="center"> <img src="https://i.imgur.com/N1xmAHM.jpg"> </p>
 
-# **HARDCORE EDITION**
+# **INSANE EDITION**
+
+- Service mesh with Istio
+- Canary deployments with Istio
 
 - ArgoCD is self-managed
 - ArgoCD App of Apps pattern is implemented

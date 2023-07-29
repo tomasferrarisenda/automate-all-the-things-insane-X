@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: backend
+  name: client
   labels:
     istio-injection: enabled
 ‒‒‒
@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: client
-  namespace: backend
+  namespace: mocha-dev
 spec:
   containers:
     - name: client

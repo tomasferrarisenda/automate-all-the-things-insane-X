@@ -8,10 +8,10 @@ spec:
   host:  mocha-backend-dev-service # Host is the name of the service associated with the deployments
   subsets:
     - name: v580 # Subset for v580
-      labels:
+      labels: # The labels on the deployment
         app: mocha-backend-dev
         version: v580
     - name: v581 # Subset for v581
-      labels:
+      labels: # The labels on the deployment
         app: mocha-backend-dev
         version: v581

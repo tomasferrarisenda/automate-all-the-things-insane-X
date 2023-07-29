@@ -10,7 +10,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: client
-  namespace: mocha-dev
+  namespace: client
 spec:
   containers:
     - name: client

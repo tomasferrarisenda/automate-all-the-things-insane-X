@@ -1,0 +1,20 @@
+# This takes care of the canary deployment
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: mocha-frontend-dev-virt-svc
+  namespace: mocha-dev
+spec:
+  hosts:
+    - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+  http:
+    - route:
+      - destination:
+          host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+          subset: v580
+        weight: 90
+      - destination:
+          host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+          subset: v581
+        weight: 10
+      

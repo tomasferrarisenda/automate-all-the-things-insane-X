@@ -1,3 +1,4 @@
+# This takes care of the canary deployment
 apiVersion: networking.istio.io/v1beta1
 kind: Virtual Service
 metadata:

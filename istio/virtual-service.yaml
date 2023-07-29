@@ -1,19 +1,19 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Virtual Service
 metadata:
-  name: first-app
-  namespace: staging
+  name: mocha-backend-dev-virt-svc
+  namespace: mocha-dev
 spec:
   hosts:
-    - first-app
+    - mocha-backend-dev-service # Host is the name of the service associated with the deployments
   http:
     - route:
       - destination:
-          host: first-app
-          subset: v1
+          host: mocha-backend-dev-service # Host is the name of the service associated with the deployments
+          subset: v580
         weight: 90
       - destination:
-          host: first-app
+          host: mocha-backend-dev-service # Host is the name of the service associated with the deployments
           subset: v2
-        weight: 10
+        weight: v581
       

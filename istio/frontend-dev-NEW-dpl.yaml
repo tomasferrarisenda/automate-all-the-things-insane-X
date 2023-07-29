@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     argocd.argoproj.io/instance: mocha-front-dev
-  name: mocha-frontend-dev-deployment-NEW
+  name: new-mocha-frontend-dev-deployment
   namespace: mocha-dev
 spec:
   replicas: 3

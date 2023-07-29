@@ -1,5 +1,5 @@
 # This defines waht backend applications are used. We call them subsets
-apiVersion: networking.istio.io/v1beta
+apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: mocha-backend-dev-dest-rule

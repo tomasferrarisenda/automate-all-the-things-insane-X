@@ -2,7 +2,7 @@ environment: prod
 
 deployment:
   image:
-    tag: 536
+    tag: 0
   replicas: 3
   env:
     redis_host: mocha-prod-elascache-rep-group.u0khnz.ng.0001.use2.cache.amazonaws.com # This value was modified by the deploy-infra pipeline

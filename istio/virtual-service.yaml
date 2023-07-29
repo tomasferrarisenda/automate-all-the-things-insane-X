@@ -1,6 +1,6 @@
 # This takes care of the canary deployment
 apiVersion: networking.istio.io/v1beta1
-kind: Virtual Service
+kind: VirtualService
 metadata:
   name: mocha-backend-dev-virt-svc
   namespace: mocha-dev

@@ -15,6 +15,6 @@ spec:
         weight: 90
       - destination:
           host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-          subset: v581
+          subset: v582
         weight: 10
       

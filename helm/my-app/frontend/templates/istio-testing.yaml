@@ -26,7 +26,7 @@ metadata:
   name: new-mocha-frontend-dev-deployment
   namespace: mocha-dev
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mocha-frontend-dev

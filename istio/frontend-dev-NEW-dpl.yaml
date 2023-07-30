@@ -10,15 +10,15 @@ spec:
   selector:
     matchLabels:
       app: mocha-frontend-dev
-      version: v581
+      version: v582
   template:
     metadata:
       labels:
         app: mocha-frontend-dev
-        version: v581
+        version: v582
     spec:
       containers:
-        - image: 'tferrari92/mocha-frontend:581'
+        - image: 'tferrari92/mocha-frontend:582'
           name: mocha-frontend-dev
           ports:
             - containerPort: 80

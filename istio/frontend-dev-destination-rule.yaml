@@ -14,4 +14,4 @@ spec:
     - name: v581 # Subset for v581
       labels: # The labels on the deployment
         app: mocha-frontend-dev
-        version: v581
+        version: v582

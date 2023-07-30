@@ -41,6 +41,6 @@ spec:
   dnsNames:
     - mocha-dev.tferrari.com
   issuerRef:
-    name: staging-cluster-issuer
+    name: production-cluster-issuer
     kind: ClusterIssuer
     group: cert-manager.io

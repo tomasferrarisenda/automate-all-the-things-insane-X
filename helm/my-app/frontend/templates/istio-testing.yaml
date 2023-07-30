@@ -113,11 +113,11 @@ spec:
         - destination:
             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
             subset: v580
-          weight: 90
+          weight: 1
         - destination:
             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
             subset: v582
-          weight: 10
+          weight: 99
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway

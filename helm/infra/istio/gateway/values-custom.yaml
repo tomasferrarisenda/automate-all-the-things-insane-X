@@ -1,2 +1,7 @@
 global:
   istioNamespace: service-mesh
+
+service:
+  annotations: {    
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb # This is to use a Network Load Balancer (NLB) instead of the default Classic/Elastic Load Balancer (ELB). 
+  }

@@ -102,7 +102,7 @@ metadata:
 spec:
   hosts:
     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-    - aaaa2079852e54370b8479810fd6f3ea-1393384656.us-east-2.elb.amazonaws.com # Istio Gateway service external IP 
+    - a53bfdafeb775454184dbd3576e8d65d-1498180360.us-east-2.elb.amazonaws.com # Istio Gateway service external IP 
   gateways:
     - api
   http:
@@ -133,4 +133,4 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - aaaa2079852e54370b8479810fd6f3ea-1393384656.us-east-2.elb.amazonaws.com # Istio Gateway service external IP 
+        - a53bfdafeb775454184dbd3576e8d65d-1498180360.us-east-2.elb.amazonaws.com # Istio Gateway service external IP 

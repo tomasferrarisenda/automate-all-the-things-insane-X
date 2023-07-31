@@ -56,7 +56,8 @@ jobs:
 
   # Necessary to delete EBS volumes???????????????????????
   - script: | 
-        kubectl delete persistentvolume --all --all-namespaces
+        kubectl delete persistentvolumeclaims --all --all-namespaces
+        kubectl delete persistentvolumes --all --all-namespaces
     displayName: 'Delete Persisten Volumnes'
 
 

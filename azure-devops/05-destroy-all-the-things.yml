@@ -55,9 +55,9 @@ jobs:
     displayName: 'Delete Ingresses'
 
   # Necessary to delete EBS volumes???????????????????????
-  # - script: | 
-  #       kubectl delete persistentvolume --all --all-namespaces
-  #   displayName: 'Delete Persisten Volumnes'
+  - script: | 
+        kubectl delete persistentvolume --all --all-namespaces
+    displayName: 'Delete Persisten Volumnes'
 
 
 - job: DeleteAWSInfrastructure

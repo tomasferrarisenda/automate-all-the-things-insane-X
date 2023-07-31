@@ -1,165 +1,84 @@
 # ---
-# apiVersion: v1
-# kind: Namespace
+# apiVersion: apps/v1
+# kind: Deployment
 # metadata:
-#   name: client
 #   labels:
-#     istio-injection: enabled
-# ---
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: client
-#   namespace: client
+#     argocd.argoproj.io/instance: mocha-front-dev
+#   name: new-mocha-frontend-dev-deployment
+#   namespace: mocha-dev
 # spec:
-#   containers:
-#     - name: client
-#       image: curlimages/curl:latest
-#       command: ["/bin/sh", "-c", "--"]
-#       args: ["while true; do sleep 30; done;"]
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: mocha-frontend-dev
+#       version: v582
+#   template:
+#     metadata:
+#       labels:
+#         app: mocha-frontend-dev
+#         version: v582
+#     spec:
+#       containers:
+#         - image: 'tferrari92/mocha-frontend:582'
+#           name: mocha-frontend-dev
+#           ports:
+#             - containerPort: 80
+#           volumeMounts:
+#             - mountPath: /usr/share/nginx/html/resources
+#               name: images-configmap
+#             - mountPath: /etc/nginx/conf.d
+#               name: nginx-conf-configmap
+#       volumes:
+#         - configMap:
+#             name: mocha-frontend-dev-images-configmap
+#           name: images-configmap
+#         - configMap:
+#             name: mocha-frontend-dev-nginx-conf-configmap
+#           name: nginx-conf-configmap
 # ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    argocd.argoproj.io/instance: mocha-front-dev
-  name: new-mocha-frontend-dev-deployment
-  namespace: mocha-dev
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mocha-frontend-dev
-      version: v582
-  template:
-    metadata:
-      labels:
-        app: mocha-frontend-dev
-        version: v582
-    spec:
-      containers:
-        - image: 'tferrari92/mocha-frontend:582'
-          name: mocha-frontend-dev
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - mountPath: /usr/share/nginx/html/resources
-              name: images-configmap
-            - mountPath: /etc/nginx/conf.d
-              name: nginx-conf-configmap
-      volumes:
-        - configMap:
-            name: mocha-frontend-dev-images-configmap
-          name: images-configmap
-        - configMap:
-            name: mocha-frontend-dev-nginx-conf-configmap
-          name: nginx-conf-configmap
----
-# This defines waht backend applications are used. We call them subsets
-apiVersion: networking.istio.io/v1beta1
-kind: DestinationRule
-metadata:
-  name: mocha-frontend-dev-dest-rule
-  namespace: mocha-dev
-spec:
-  host:  mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-  subsets:
-    - name: v596 # Subset for v580
-      labels: # The labels on the deployment
-        app: mocha-frontend-dev
-        version: v596
-    - name: v582 # Subset for v581
-      labels: # The labels on the deployment
-        app: mocha-frontend-dev
-        version: v582
----
-# # # This takes care of the canary deployment
-# # apiVersion: networking.istio.io/v1beta1
-# # kind: VirtualService
-# # metadata:
-# #   name: mocha-frontend-dev-virt-svc
-# #   namespace: mocha-dev
-# # spec:
-# #   hosts:
-# #     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #   http:
-# #     - route:
-# #       - destination:
-# #           host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #           subset: v580
-# #         weight: 90
-# #       - destination:
-# #           host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #           subset: v582
-# #         weight: 10
+# # This defines waht backend applications are used. We call them subsets
+# apiVersion: networking.istio.io/v1beta1
+# kind: DestinationRule
+# metadata:
+#   name: mocha-frontend-dev-dest-rule
+#   namespace: mocha-dev
+# spec:
+#   host:  mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+#   subsets:
+#     - name: v596 # Subset for v580
+#       labels: # The labels on the deployment
+#         app: mocha-frontend-dev
+#         version: v596
+#     - name: v582 # Subset for v581
+#       labels: # The labels on the deployment
+#         app: mocha-frontend-dev
+#         version: v582
 # ---
-# # # This takes care of the canary deployment
-# # apiVersion: networking.istio.io/v1beta1
-# # kind: VirtualService
-# # metadata:
-# #   name: mocha-frontend-dev-virt-svc
-# #   namespace: mocha-dev
-# # spec:
-# #   hosts:
-# #     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #     - a53bfdafeb775454184dbd3576e8d65d-288f5ef364a74147.elb.us-east-2.amazonaws.com # Istio Gateway service external IP
-# #   gateways:
-# #     - api
-# #   http:
-# #     - match:
-# #         - uri:
-# #           prefix: /
-# #       route:
-# #         - destination:
-# #             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #             subset: v580
-# #           weight: 1
-# #         - destination:
-# #             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-# #             subset: v582
-# #           weight: 99
-# ---
-# # apiVersion: networking.istio.io/v1beta1
-# # kind: Gateway
-# # metadata:
-# #   name: api
-# #   namespace: mocha-dev
-# # spec:
-# #   selector:
-# #     istio: gateway
-# #   servers:
-# #     - port:
-# #         number: 80
-# #         name: http
-# #         protocol: HTTP
-# #       hosts:
-# #         - a53bfdafeb775454184dbd3576e8d65d-288f5ef364a74147.elb.us-east-2.amazonaws.com # Istio Gateway service external IP
----
-# This takes care of the canary deployment
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: mocha-frontend-dev-virt-svc
-  namespace: mocha-dev
-spec:
-  hosts:
-    - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-    - mocha-dev.tferrari.com # Istio Gateway service external IP
-  gateways:
-    - istio-gateway
-  http:
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-            subset: v596
-          weight: 1
-        - destination:
-            host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-            subset: v582
-          weight: 99
+# # This takes care of the canary deployment
+# apiVersion: networking.istio.io/v1beta1
+# kind: VirtualService
+# metadata:
+#   name: mocha-frontend-dev-virt-svc
+#   namespace: mocha-dev
+# spec:
+#   hosts:
+#     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+#     - mocha-dev.tferrari.com # Istio Gateway service external IP
+#   gateways:
+#     - istio-gateway
+#   http:
+#     - match:
+#         - uri:
+#             prefix: /
+#       route:
+#         - destination:
+#             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+#             subset: v596
+#           weight: 1
+#         - destination:
+#             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+#             subset: v582
+#           weight: 99
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway

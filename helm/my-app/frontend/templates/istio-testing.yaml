@@ -64,10 +64,10 @@ metadata:
 spec:
   host:  mocha-frontend-dev-service # Host is the name of the service associated with the deployments
   subsets:
-    - name: v580 # Subset for v580
+    - name: v596 # Subset for v580
       labels: # The labels on the deployment
         app: mocha-frontend-dev
-        version: v580
+        version: v596
     - name: v582 # Subset for v581
       labels: # The labels on the deployment
         app: mocha-frontend-dev
@@ -154,7 +154,7 @@ spec:
       route:
         - destination:
             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-            subset: v580
+            subset: v596
           weight: 50
         - destination:
             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments

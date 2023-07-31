@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProjectgit 
 metadata:
-  name: linkerd
+  name: flagger
   namespace: argocd
 spec:
   clusterResourceWhitelist:

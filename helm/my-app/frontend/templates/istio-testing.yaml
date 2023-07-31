@@ -150,7 +150,7 @@ spec:
   http:
     - match:
         - uri:
-          prefix: /
+            prefix: /
       route:
         - destination:
             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments

@@ -23,6 +23,8 @@
 
 - Service mesh with Istio
 - Canary deployments with Istio
+- Ingress Gateway with Istio
+- Cert-Manager (Optional)
 
 - ArgoCD is self-managed
 - ArgoCD App of Apps pattern is implemented

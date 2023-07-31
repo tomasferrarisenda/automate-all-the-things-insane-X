@@ -1,6 +1,6 @@
 crd:
   create: false
 
-meshProvider: linkerd
+meshProvider: istio
 
 metricsServer: http://linkerd-prometheus:9090

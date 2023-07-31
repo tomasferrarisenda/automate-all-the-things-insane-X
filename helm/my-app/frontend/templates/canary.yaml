@@ -38,13 +38,13 @@ spec:
     #   retryOn: "gateway-error,connect-failure,refused-stream"
   analysis:
     # Schedule interval (default 60s)
-    interval: 10s
+    interval: 30s
     # Max number of failed metric checks before rollback
-    threshold: 5
+    threshold: 3
     # Max traffic percentage routed to canary
-    maxWeight: 50
+    maxWeight: 60
     # Canary increment step
-    stepWeight: 10
+    stepWeight: 20
     metrics:
     - name: request-success-rate
       # Minimum req success rate (non 5xx responses) percentage
@@ -54,7 +54,7 @@ spec:
     - name: request-duration
       # Maximum req duration P99 milliseconds
       thresholdRange:
-        max: 500
+        max: 250
       interval: 30s
     # # Testing (optional)
     # webhooks:

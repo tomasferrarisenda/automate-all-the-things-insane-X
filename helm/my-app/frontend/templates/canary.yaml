@@ -65,3 +65,17 @@ spec:
       thresholdRange:
         max: 500
       interval: 30s
+    # # Testing (optional)
+    # webhooks:
+    #   - name: acceptance-test
+    #     type: pre-rollout
+    #     url: http://flagger-loadtester.ecommerce/
+    #     timeout: 30s
+    #     metadata:
+    #       type: bash
+    #       cmd: "curl http://orders-canary:3003/v1/orders | grep deliveryType"
+    #   - name: load-test
+    #     url: http://flagger-loadtester.ecommerce/
+    #     timeout: 5s
+    #     metadata:
+    #       cmd: "hey -z 1m -q 10 -c 2 http://orders-canary.ecommerce:3003/v1/orders"

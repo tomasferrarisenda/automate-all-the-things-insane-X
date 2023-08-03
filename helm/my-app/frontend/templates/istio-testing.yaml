@@ -104,3 +104,21 @@ spec:
     #   tls:
     #     credentialName: mocha-dev-tferrari-com-crt
     #     mode: SIMPLE
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: istio-pods
+  namespace: observability
+  labels:
+    prometheus: main
+spec:
+  namespaceSelector:
+    matchNames:
+      - mocha-dev
+  selector:
+    matchLabels:
+      istio: monitor
+  podMetricsEndpoints:
+    - port: http-envoy-prom
+      path: stats/prometheus

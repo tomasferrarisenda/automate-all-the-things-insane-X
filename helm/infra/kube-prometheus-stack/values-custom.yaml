@@ -1,22 +1,22 @@
 grafana:
-  enabled: false # We will use a separate helm chart to deploy Grafana which gives us more options in terms of dashboards
+  # enabled: false # We will use a separate helm chart to deploy Grafana which gives us more options in terms of dashboards
   # forceDeployDashboards: true # This will deploy de default Grafana dashboards even if we are not using this Grafana insalation.
-  # ingress:
-  #   enabled: true
-  #   annotations: {    
-  #     kubernetes.io/ingress.class: alb,
-  #     alb.ingress.kubernetes.io/scheme: internet-facing,
-  #     alb.ingress.kubernetes.io/target-type: ip,
-  #     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP,
-  #     alb.ingress.kubernetes.io/healthcheck-port: traffic-port,
-  #     alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15',
-  #     alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5',
-  #     alb.ingress.kubernetes.io/success-codes: '200',
-  #     alb.ingress.kubernetes.io/healthy-threshold-count: '2',
-  #     alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
-  #   }
-  # additionalDataSources:
-  # - name: Loki
-  #   type: loki
-  #   url: http://loki-stack:3100 # Name of the k8s service and it's port
-  #   access: proxy
+  ingress:
+    enabled: true
+    annotations: {    
+      kubernetes.io/ingress.class: alb,
+      alb.ingress.kubernetes.io/scheme: internet-facing,
+      alb.ingress.kubernetes.io/target-type: ip,
+      alb.ingress.kubernetes.io/healthcheck-protocol: HTTP,
+      alb.ingress.kubernetes.io/healthcheck-port: traffic-port,
+      alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15',
+      alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5',
+      alb.ingress.kubernetes.io/success-codes: '200',
+      alb.ingress.kubernetes.io/healthy-threshold-count: '2',
+      alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
+    }
+  additionalDataSources:
+  - name: Loki
+    type: loki
+    url: http://loki-stack:3100 # Name of the k8s service and it's port
+    access: proxy

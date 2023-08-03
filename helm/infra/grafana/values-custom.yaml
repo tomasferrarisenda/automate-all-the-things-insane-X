@@ -46,7 +46,7 @@ dashboards:
   default:
     # Our custom dashboards
     custom-dashboard:
-      file: dashboards/custom-dashboard.json
+      file: dashboards/*
     # Dashboards from grafana.com  
     ## Commented dashboards are outdated and must be fixed manually
     # clusterMonitoringForKubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/

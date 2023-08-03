@@ -47,6 +47,7 @@ dashboards:
     # Our custom dashboards
     custom-dashboard:
       file: dashboards/custom-dashboard.json
+    alertmanager-overview:
       file: dashboards/alertmanager-overview.json
     # Dashboards from grafana.com  
     ## Commented dashboards are outdated and must be fixed manually

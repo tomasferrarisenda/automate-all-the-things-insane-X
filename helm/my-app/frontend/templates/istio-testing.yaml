@@ -111,7 +111,7 @@ metadata:
   name: istio-pods
   namespace: observability
   labels:
-    prometheus: main
+    release: prometheus # Required to be scraped by Prometheus server
 spec:
   namespaceSelector:
     matchNames:

@@ -122,3 +122,39 @@ spec:
   podMetricsEndpoints:
     - port: http-envoy-prom
       path: stats/prometheus
+
+# We creare a service to be watched by the service monitor
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-prom
+  namespace: service-mesh
+  labels:
+    app: gateway
+spec:
+  ports:
+    - name: metrics
+      port: 15090
+  selector: # Labels of the gateway pod
+    app: istio-gateway 
+    istio: gateway
+ 
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istio-pods
+  namespace: observability
+  labels:
+    release: kube-prometheus-stack # Required to be scraped by Prometheus server
+spec:
+  namespaceSelector:
+    matchNames:
+      - service-mesh
+  selector:
+    matchLabels:
+      app: gateway # Label of the service
+  endpoints:
+    - port: metrics
+      path: stats/prometheus

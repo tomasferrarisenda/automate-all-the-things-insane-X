@@ -49,42 +49,76 @@ dashboards:
       file: dashboards/alertmanager-overview.json
     apiserver:
       file: dashboards/apiserver.json
-
+    cluster-total:
+      file: dashboards/cluster-total.json
+    controller-manager:
+      file: dashboards/controller-manager.json
+    etcd:
+      file: dashboards/etcd.json
+    grafana-overview:
+      file: dashboards/grafana-overview.json
+    k8s-coredns:
+      file: dashboards/k8s-coredns.json
+    k8s-resources-cluster:
+      file: dashboards/k8s-resources-cluster.json
+    k8s-resources-multicluster:
+      file: dashboards/k8s-resources-multicluster.json
+    k8s-resources-namespace:
+      file: dashboards/k8s-resources-namespace.json
+    k8s-resources-node:
+      file: dashboards/k8s-resources-node.json
+    k8s-resources-pod:
+      file: dashboards/k8s-resources-pod.json
+    k8s-resources-workload:
+      file: dashboards/k8s-resources-workload.json
+    k8s-resources-workloads-namespace:
+      file: dashboards/k8s-resources-workloads-namespace.json
+    kubelet:
+      file: dashboards/kubelet.json
+    namespace-by-pod:
+      file: dashboards/namespace-by-pod.json
+    namespace-by-workload:
+      file: dashboards/namespace-by-workload.json
+    node-cluster-rsrc-use:
+      file: dashboards/node-cluster-rsrc-use.json
+    node-rsrc-use:
+      file: dashboards/node-rsrc-use.json
     nodes:
       file: dashboards/nodes.json
+    nodes-darwin:
+      file: dashboards/nodes-darwin.json
+    persistentvolumesusage:
+      file: dashboards/persistentvolumesusage.json
+    pod-total:
+      file: dashboards/pod-total.json
+    prometheus:
+      file: dashboards/prometheus.json
+    proxy:
+      file: dashboards/proxy.json
+    scheduler:
+      file: dashboards/scheduler.json
+    workload-total:
+      file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
-    ## Commented dashboards are outdated and must be fixed manually
-    # clusterMonitoringForKubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
-    #   gnetId: 10000 
-    #   revision: 1
-      # kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
-      #   gnetId: 15757
-      #   revision: 30
-      # kubernetesViewsNodes: # https://grafana.com/grafana/dashboards/15759-kubernetes-views-nodes/
-      #   gnetId: 15759
-      #   revision: 19
-      # kubernetesSystemAPIServer: # https://grafana.com/grafana/dashboards/15761-kubernetes-system-api-server/
-      #   gnetId: 15761
-      #   revision: 13
-      # kubernetesSystemCoreDNS: # https://grafana.com/grafana/dashboards/15762-kubernetes-system-coredns/
-      #   gnetId: 15762
-      #   revision: 13
-      # kubernetesViewsNamespaces: # https://grafana.com/grafana/dashboards/15758-kubernetes-views-namespaces/
-      #   gnetId: 15758
-      #   revision: 24
-      # kubernetesViewsPods: # https://grafana.com/grafana/dashboards/15760-kubernetes-views-pods/
-      #   gnetId: 15760
-      #   revision: 20
-      # nodeExporterFull: # https://grafana.com/grafana/dashboards/1860-node-exporter-full/
-      #   gnetId: 1860
-      #   revision: 31
-    # lokiKubernetesLogs: # https://grafana.com/grafana/dashboards/15141-kubernetes-service-logs/?tab=revisions
-    #   gnetId: 15141
-    #   revision: 1
-    # argocd: # https://grafana.com/grafana/dashboards/14584-argocd/
-    #   gnetId: 14584
-    #   revision: 1
-    # awsElbApplicationLoadBalancer: # https://grafana.com/grafana/dashboards/650-aws-elb-application-load-balancer/
-    #   gnetId: 650
-    #   revision: 8
+    # kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
+    #   gnetId: 15757
+    #   revision: 30
+    # kubernetesViewsNodes: # https://grafana.com/grafana/dashboards/15759-kubernetes-views-nodes/
+    #   gnetId: 15759
+    #   revision: 19
+    # kubernetesSystemAPIServer: # https://grafana.com/grafana/dashboards/15761-kubernetes-system-api-server/
+    #   gnetId: 15761
+    #   revision: 13
+    # kubernetesSystemCoreDNS: # https://grafana.com/grafana/dashboards/15762-kubernetes-system-coredns/
+    #   gnetId: 15762
+    #   revision: 13
+    # kubernetesViewsNamespaces: # https://grafana.com/grafana/dashboards/15758-kubernetes-views-namespaces/
+    #   gnetId: 15758
+    #   revision: 24
+    # kubernetesViewsPods: # https://grafana.com/grafana/dashboards/15760-kubernetes-views-pods/
+    #   gnetId: 15760
+    #   revision: 20
+    # nodeExporterFull: # https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+    #   gnetId: 1860
+    #   revision: 31

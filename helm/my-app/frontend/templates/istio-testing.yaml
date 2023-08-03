@@ -144,7 +144,7 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: istio-pods
+  name: istio-service
   namespace: observability
   labels:
     release: kube-prometheus-stack # Required to be scraped by Prometheus server

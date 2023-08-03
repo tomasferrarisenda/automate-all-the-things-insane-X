@@ -1,5 +1,6 @@
 grafana:
   enabled: false # We will use a separate helm chart to deploy Grafana which gives us more options in terms of dashboards
+  forceDeployDashboards: true # This will deploy de default Grafana dashboards even if we are not using this Grafana insalation.
   # ingress:
   #   enabled: true
   #   annotations: {    

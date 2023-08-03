@@ -44,10 +44,11 @@ dashboardProviders:
 
 dashboards: 
   default:
+    # Our custom dashboards
     custom-dashboard:
       file: dashboards/*
-      
-    # Commented dashboards are outdated and must be fixed manually
+    # Dashboards from grafana.com  
+    ## Commented dashboards are outdated and must be fixed manually
     # clusterMonitoringForKubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
     #   gnetId: 10000 
     #   revision: 1

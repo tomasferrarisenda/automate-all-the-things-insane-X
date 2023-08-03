@@ -20,7 +20,7 @@ datasources:
     datasources:
     - name: Prometheus
       type: prometheus
-      url: http://kube-prometheus-stack-prometheus# Name of the k8s service and it's port. In this case port is 80 which is default
+      url: http://kube-prometheus-stack-prometheus # Name of the k8s service and it's port. In this case port is 80 which is default
       # url: http://prometheus-server # Name of the k8s service and it's port. In this case port is 80 which is default
       access: proxy
       isDefault: true

@@ -22,3 +22,4 @@
        selfHeal: true
      syncOptions:
        - CreateNamespace=true
+       - ServerSideApply=true # Required because of error "Too long: must have at most 262144 bytes." 

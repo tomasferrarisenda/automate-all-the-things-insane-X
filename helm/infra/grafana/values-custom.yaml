@@ -42,8 +42,12 @@ dashboardProviders:
        options:
          path: /var/lib/grafana/dashboards/default
 
-dashboards: # Commented dashboards are outdated and must be fixed manually
+dashboards: 
   default:
+    custom-dashboard:
+      file: dashboards/*
+      
+    # Commented dashboards are outdated and must be fixed manually
     # clusterMonitoringForKubernetes: # https://grafana.com/grafana/dashboards/10000-kubernetes-cluster-monitoring-via-prometheus/
     #   gnetId: 10000 
     #   revision: 1

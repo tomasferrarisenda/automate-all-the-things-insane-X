@@ -6,7 +6,7 @@ metadata:
   creationTimestamp: "2023-08-03T13:31:48Z"
   generation: 1
   name: prometheuses.monitoring.coreos.com
-  resourceVersion: "89485"
+  resourceVersion: "171434"
   uid: 5e41b69e-0ef1-467f-afad-170a467ef2f9
 spec:
   conversion:

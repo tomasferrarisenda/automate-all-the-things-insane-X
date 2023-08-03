@@ -10,6 +10,14 @@ kubeEtcd:
 kubeScheduler:
   enabled: false
 
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+       matchLabels:
+        release: prometheus
+    podMonitorSelector:
+      matchLabels:
+        release: prometheus
 
 grafana:
   enabled: false # We will use a separate helm chart to deploy Grafana which gives us more freedom in terms of dashboards.

@@ -62,7 +62,7 @@
 #   namespace: mocha-dev
 # spec:
 #   hosts:
-#     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+#     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments NO!!!! NO SE Q ES ESTO
 #     - mocha-dev.tferrari.com # Istio Gateway service external IP
 #   gateways:
 #     - istio-gateway
@@ -113,9 +113,6 @@ metadata:
 spec:
   hosts:
   - mocha-dev.tferrari.com
-  - mocha-frontend-dev-service
-  - mocha-frontend-dev-service.mocha-dev
-  - mocha-frontend-dev-service.mocha-dev.svc.cluster.local
   # - "*"
   gateways:
   - mocha-front-gateway

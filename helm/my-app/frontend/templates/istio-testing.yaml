@@ -112,8 +112,8 @@ metadata:
   namespace: mocha-dev
 spec:
   hosts:
-  - mocha-frontend-dev-deployment
-  # - "*"
+  # - mocha-frontend-dev-deployment
+  - "*"
   gateways:
   - mocha-front-gateway
   http:

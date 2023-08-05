@@ -120,9 +120,9 @@ spec:
   - route:
     - destination:
         host: mocha-frontend-dev-service
-    match:
-    - uri:
-        prefix: /
+    # match:
+    # - uri:
+    #     prefix: /
 
 ---
 apiVersion: monitoring.coreos.com/v1

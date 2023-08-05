@@ -12,6 +12,15 @@ kubeScheduler:
 
 # prometheus:
 #   prometheusSpec:
+#     storageSpec:
+#       volumeClaimTemplate:
+#         spec:
+#           storageClassName: gluster
+#           accessModes: ["ReadWriteOnce"]
+#           resources:
+#             requests:
+#               storage: 5Gi
+#         selector: {}
 #     serviceMonitorSelector:
 #        matchLabels:
 #         release: prometheus

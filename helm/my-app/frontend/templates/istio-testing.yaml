@@ -112,16 +112,17 @@ metadata:
   namespace: mocha-dev
 spec:
   hosts:
-  - "*"
+  - mocha-frontend-dev-deployment
+  # - "*"
   gateways:
   - mocha-front-gateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
+  - route:
     - destination:
         host: mocha-frontend-dev-service
+    # match:
+    # - uri:
+    #     prefix: /
     #     port:
     #       number: 3004
     # retries:

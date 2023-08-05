@@ -18,7 +18,7 @@ spec:
     targetPort: 80
     # Istio gateways (optional)
     gateways:
-    - istio-gateway
+    - istio-gateway.service-mesh.svc.cluster.local
     # # Istio virtual service host names (optional)
     # hosts:
     # - "*"

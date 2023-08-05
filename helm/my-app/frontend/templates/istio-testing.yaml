@@ -120,14 +120,10 @@ spec:
   - route:
     - destination:
         host: mocha-frontend-dev-service
-    # match:
-    # - uri:
-    #     prefix: /
-    #     port:
-    #       number: 3004
-    # retries:
-    #   attempts: 3
-    #   perTryTimeout: 2s
+    match:
+    - uri:
+        prefix: /
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor

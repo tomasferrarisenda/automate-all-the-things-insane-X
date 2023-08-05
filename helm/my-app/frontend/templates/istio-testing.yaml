@@ -105,24 +105,24 @@ spec:
     #     credentialName: mocha-dev-tferrari-com-crt
     #     mode: SIMPLE
 ---
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: mocha-frontend-dev-virt-svc
-  namespace: mocha-dev
-spec:
-  hosts:
-  - mocha-dev.tferrari.com
-  # - "*"
-  gateways:
-  - mocha-front-gateway
-  http:
-  - route:
-    - destination:
-        host: mocha-frontend-dev-service
-    # match:
-    # - uri:
-    #     prefix: /
+# apiVersion: networking.istio.io/v1beta1
+# kind: VirtualService
+# metadata:
+#   name: mocha-frontend-dev-virt-svc
+#   namespace: mocha-dev
+# spec:
+#   hosts:
+#   - mocha-dev.tferrari.com
+#   # - "*"
+#   gateways:
+#   - mocha-front-gateway
+#   http:
+#   - route:
+#     - destination:
+#         host: mocha-frontend-dev-service
+#     # match:
+#     # - uri:
+#     #     prefix: /
 
 ---
 apiVersion: monitoring.coreos.com/v1

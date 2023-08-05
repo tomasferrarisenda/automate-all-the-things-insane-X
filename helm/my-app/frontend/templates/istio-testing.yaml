@@ -83,7 +83,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: istio-gateway
+  name: mocha-front-gateway
   namespace: mocha-dev
 spec:
   selector:
@@ -114,7 +114,7 @@ spec:
 #   hosts:
 #   - "*"
 #   gateways:
-#   - istio-gateway
+#   - mocha-front-gateway
 #   http:
 #   - match:
 #     - uri:

@@ -53,32 +53,32 @@
 #       labels: # The labels on the deployment
 #         app: mocha-frontend-dev
 #         version: v582
-# ---
-# # This takes care of the canary deployment
-# apiVersion: networking.istio.io/v1beta1
-# kind: VirtualService
-# metadata:
-#   name: mocha-frontend-dev-virt-svc
-#   namespace: mocha-dev
-# spec:
-#   hosts:
-#     - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-#     - mocha-dev.tferrari.com # Istio Gateway service external IP
-#   gateways:
-#     - istio-gateway
-#   http:
-#     - match:
-#         - uri:
-#             prefix: /
-#       route:
-#         - destination:
-#             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-#             subset: v596
-#           weight: 1
-#         - destination:
-#             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
-#             subset: v582
-#           weight: 99
+---
+# This takes care of the canary deployment
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: mocha-frontend-dev-virt-svc
+  namespace: mocha-dev
+spec:
+  hosts:
+    - mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+    - mocha-dev.tferrari.com # Istio Gateway service external IP
+  gateways:
+    - istio-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+            subset: v596
+          weight: 1
+        - destination:
+            host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
+            subset: v582
+          weight: 99
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway

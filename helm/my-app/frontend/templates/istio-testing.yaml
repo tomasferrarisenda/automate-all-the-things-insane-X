@@ -112,7 +112,7 @@ metadata:
   namespace: mocha-dev
 spec:
   hosts:
-  # - mocha-dev.tferrari.com
+  - mocha-dev.tferrari.com
   - mocha-frontend-dev-service
   - mocha-frontend-dev-service.mocha-dev
   - mocha-frontend-dev-service.mocha-dev.svc.cluster.local

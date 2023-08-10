@@ -57,6 +57,8 @@ dashboards:
       file: dashboards/etcd.json
     grafana-overview:
       file: dashboards/grafana-overview.json
+    istio:
+      file: dashboards/istio.json
     k8s-coredns:
       file: dashboards/k8s-coredns.json
     k8s-resources-cluster:

@@ -47,14 +47,14 @@ spec:
     # Canary increment step
     stepWeight: 20
     metrics:
-    - name: istio_requests_total # BORRAR! hay q conseguir q busque estos parametros de otra forma
-    # - name: request-success-rate
+    # - name: istio_requests_total # BORRAR! hay q conseguir q busque estos parametros de otra forma
+    - name: request-success-rate
       # Minimum req success rate (non 5xx responses) percentage
       thresholdRange:
         min: 99
       interval: 1m
-    - name: istio_request_duration_seconds_bucket # BORRAR! hay q conseguir q busque estos parametros de otra forma
-    # - name: request-duration
+    # - name: istio_request_duration_seconds_bucket # BORRAR! hay q conseguir q busque estos parametros de otra forma
+    - name: request-duration
       # Maximum req duration P99 milliseconds
       thresholdRange:
         max: 250

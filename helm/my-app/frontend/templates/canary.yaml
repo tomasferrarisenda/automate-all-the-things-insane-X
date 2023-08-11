@@ -29,9 +29,9 @@ spec:
     #     # Use ISTIO_MUTUAL when mTLS is enabled
     #     mode: DISABLE
     # HTTP match conditions (optional)
-    match:
-      - uri:
-          prefix: /
+    # match:
+    #   - uri:
+    #       prefix: /
     # # Istio retry policy (optional)
     # retries:
     #   attempts: 3
@@ -54,11 +54,19 @@ spec:
         min: 99
       interval: 1m
     # - name: istio_request_duration_seconds_bucket # BORRAR! hay q conseguir q busque estos parametros de otra forma
-    - name: request-duration
-      # Maximum req duration P99 milliseconds
+    # WE ARE USING THE MetricTemplate WE MANUALLY ADDED (https://docs.flagger.app/v/main/dev/upgrade-guide)
+    - name: latency
+      templateRef: 
+        name: latency
       thresholdRange:
-        max: 250
-      interval: 30s
+        max: 1000
+      interval: 1m
+    # THIS DOESN'T WORK ANYMORE (https://docs.flagger.app/v/main/dev/upgrade-guide)
+    # - name: request-duration
+    #   # Maximum req duration P99 milliseconds
+    #   thresholdRange:
+    #     max: 250
+    #   interval: 30s
     # # Testing (optional)
     # webhooks:
     #   - name: acceptance-test

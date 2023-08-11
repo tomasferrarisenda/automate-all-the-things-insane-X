@@ -57,7 +57,7 @@ spec:
     # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES (https://docs.flagger.app/v/main/dev/upgrade-guide)
     - name: latency
       templateRef: 
-        name: latency
+        name: latency.service-mesh
       thresholdRange:
         max: 1000
       interval: 1m

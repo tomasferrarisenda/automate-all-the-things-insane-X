@@ -11,7 +11,7 @@ apiVersion: flagger.app/v1beta1
 kind: MetricTemplate
 metadata:
   name: latency
-  namespace: {{ .Release.Namespace }}
+  # namespace: {{ .Release.Namespace }}
   namespace: mocha-dev
 spec:
   provider:

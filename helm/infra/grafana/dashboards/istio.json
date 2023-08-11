@@ -163,10 +163,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -244,10 +241,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "rate(istio_requests_total{destination_app=~\"$app\", response_code=~\"$status\", job=~\"$job\"}[$__rate_interval])",
           "legendFormat": "{{ destination_app }}-{{ destination_canonical_revision }}",
@@ -255,10 +249,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum(rate(istio_requests_total{destination_app=~\"$app\", response_code=~\"$status\", job=~\"$job\"}[$__rate_interval]))",
           "hide": false,
@@ -351,10 +342,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum(\n    rate(\n        istio_requests_total\n        {\n            destination_app=~\"$app\",\n            response_code!~\"[4-5].*\",\n            job=~\"$job\"\n        }[1m])) by (destination_app) /\nsum(\n    rate(\n        istio_requests_total\n        {\n            destination_app=~\"$app\",\n            job=~\"$job\"\n        }[1m])) by (destination_app)",
           "legendFormat": "{{ ingress }}",

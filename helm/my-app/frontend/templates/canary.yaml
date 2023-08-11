@@ -28,10 +28,10 @@ spec:
     #   tls:
     #     # Use ISTIO_MUTUAL when mTLS is enabled
     #     mode: DISABLE
-    # # HTTP match conditions (optional)
-    # match:
-    #   - uri:
-    #       prefix: /v1/orders
+    # HTTP match conditions (optional)
+    match:
+      - uri:
+          prefix: /
     # # Istio retry policy (optional)
     # retries:
     #   attempts: 3

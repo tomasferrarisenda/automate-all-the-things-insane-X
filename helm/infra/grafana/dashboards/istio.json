@@ -280,7 +280,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(istio_requests_total{destination_app=~\"$app\", job=~\"$job\"}[30s])",
+          "expr": "rate(istio_requests_total{destination_app=~\"$app\", job=~\"$job\"}[$__rate_interval])",
           "legendFormat": "{{ destination_app }}-{{ destination_canonical_revision }}",
           "range": true,
           "refId": "A"
@@ -291,7 +291,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(istio_requests_total{destination_app=~\"$app\", job=~\"$job\"}[30s]))",
+          "expr": "sum(rate(istio_requests_total{destination_app=~\"$app\", job=~\"$job\"}[$__rate_interval]))",
           "hide": false,
           "legendFormat": "Total",
           "range": true,

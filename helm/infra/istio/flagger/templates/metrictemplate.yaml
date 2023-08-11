@@ -9,7 +9,7 @@ apiVersion: flagger.app/v1beta1
 kind: MetricTemplate
 metadata:
   name: latency
-  namespace: observability
+  namespace: mocha-dev
   # namespace: {{ .Release.Namespace }}
 spec:
   provider:

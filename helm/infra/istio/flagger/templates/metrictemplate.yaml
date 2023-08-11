@@ -9,8 +9,8 @@ apiVersion: flagger.app/v1beta1
 kind: MetricTemplate
 metadata:
   name: latency
-  namespace: mocha-dev
-  namespace: {{ .Release.Namespace }}
+  namespace: observability
+  # namespace: {{ .Release.Namespace }}
 spec:
   provider:
     type: prometheus

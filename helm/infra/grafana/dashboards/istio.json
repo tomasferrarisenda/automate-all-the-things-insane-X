@@ -133,10 +133,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "histogram_quantile(\n    0.99, sum(\n        rate(\n            istio_request_duration_milliseconds_bucket\n            {\n                destination_app=~\"$app\",\n                response_code=~\"$status\",\n                job=~\"$job\"\n            }[1m])) by (le)\n    )",
           "legendFormat": "P99",
@@ -144,10 +141,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "histogram_quantile(\n    0.90, sum(\n        rate(\n            istio_request_duration_milliseconds_bucket\n            {\n                destination_app=~\"$app\",\n                response_code=~\"$status\",\n                job=~\"$job\"\n            }[1m])) by (le)\n    )",
           "hide": false,
@@ -156,10 +150,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "histogram_quantile(\n    0.50, sum(\n        rate(\n            istio_request_duration_milliseconds_bucket\n            {\n                destination_app=~\"$app\",\n                response_code=~\"$status\",\n                job=~\"$job\"\n            }[1m])) by (le)\n    )",
           "hide": false,
@@ -280,10 +271,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {

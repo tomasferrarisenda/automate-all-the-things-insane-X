@@ -49,8 +49,9 @@ spec:
     metrics:
     - name: request-success-rate
       # Minimum req success rate (non 5xx responses) percentage
-      thresholdRange:
-        min: 99
+      threshold: 99
+      # thresholdRange:
+      #   min: 99
       interval: 1m
     # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     - name: latency

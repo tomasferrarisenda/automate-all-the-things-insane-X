@@ -1,4 +1,6 @@
 {
+  "__inputs": [],
+  "__requires": [],
   "annotations": { "list": [] },
   "editable": false,
   "fiscalYearStartMonth": 0,
@@ -8,10 +10,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {

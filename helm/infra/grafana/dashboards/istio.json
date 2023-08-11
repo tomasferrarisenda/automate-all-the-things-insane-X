@@ -3,9 +3,13 @@
   "__requires": [],
   "annotations": { "list": [] },
   "editable": false,
+  "gnetId": null,
   "graphTooltip": 1,
-  "id": 28,
+  "hideControls": false,
+  "id": null,
   "links": [],
+  "refresh": "5s",
+  "schemaVersion": 38,
   "liveNow": false,
   "panels": [
     {
@@ -353,8 +357,6 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
-  "schemaVersion": 38,
   "style": "dark",
   "tags": ["istio"],
   "templating": {

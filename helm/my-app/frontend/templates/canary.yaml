@@ -47,13 +47,11 @@ spec:
     # Canary increment step
     stepWeight: 20
     metrics:
-    # - name: istio_requests_total # BORRAR! hay q conseguir q busque estos parametros de otra forma
     - name: request-success-rate
       # Minimum req success rate (non 5xx responses) percentage
       thresholdRange:
         min: 99
       interval: 1m
-    # - name: istio_request_duration_seconds_bucket # BORRAR! hay q conseguir q busque estos parametros de otra forma
     # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     - name: latency
       templateRef: 

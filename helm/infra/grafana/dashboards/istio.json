@@ -397,11 +397,7 @@
         "type": "query"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "mocha-frontend-dev",
-          "value": "mocha-frontend-dev"
-        },
+        "current": {},
         "datasource": "$datasource",
         "definition": "label_values(istio_request_duration_milliseconds_count{job=~\"$job\"}, destination_app)",
         "hide": 0,

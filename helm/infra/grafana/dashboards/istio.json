@@ -424,10 +424,7 @@
           "text": "gateway-prom",
           "value": "gateway-prom"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
+        "datasource": "$datasource",
         "definition": "label_values(istio_requests_total, job)",
         "description": "",
         "hide": 0,

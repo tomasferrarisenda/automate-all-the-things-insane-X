@@ -23,7 +23,7 @@ spec:
                     reporter="destination",
                     destination_workload_namespace={{`"{{ namespace }}"`}},
                     destination_workload=~{{`"{{ target }}"`}}
-                }[{{`"{{ interval }}"`}}]
+                }[{{`{{ interval }}`}}]
             )
         ) by (le)
     )

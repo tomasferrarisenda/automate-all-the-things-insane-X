@@ -373,11 +373,7 @@
         "type": "datasource"
       },
       {
-        "current": {
-          "selected": false,
-          "text": "gateway-prom",
-          "value": "gateway-prom"
-        },
+        "current": {},
         "datasource": "$datasource",
         "definition": "label_values(istio_requests_total, job)",
         "description": "",

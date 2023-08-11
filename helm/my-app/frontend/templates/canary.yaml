@@ -58,6 +58,7 @@ spec:
     - name: latency
       templateRef: 
         name: latency
+        namespace: service-mesh
       thresholdRange:
         max: 1000
       interval: 1m

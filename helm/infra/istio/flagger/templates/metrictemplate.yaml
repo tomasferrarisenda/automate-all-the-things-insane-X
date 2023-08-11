@@ -12,6 +12,7 @@ kind: MetricTemplate
 metadata:
   name: latency
   namespace: {{ .Release.Namespace }}
+  namespace: mocha-dev
 spec:
   provider:
     type: prometheus

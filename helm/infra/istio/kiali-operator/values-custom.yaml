@@ -1,6 +1,11 @@
 cr:
   create: true
 
+spec:
+  external_services:
+    prometheus:
+      url: "http://kube-prometheus-stack.observability:9090/"
+
 ingress:
   annotations: {    
     kubernetes.io/ingress.class: alb,

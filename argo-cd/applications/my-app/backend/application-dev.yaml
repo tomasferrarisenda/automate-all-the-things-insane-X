@@ -25,5 +25,5 @@ spec:
     managedNamespaceMetadata:
       # annotations:
       #   linkerd.io/inject: enabled
-      labels:
-        istio-injection: enabled
+      # labels:
+      #   istio-injection: enabled

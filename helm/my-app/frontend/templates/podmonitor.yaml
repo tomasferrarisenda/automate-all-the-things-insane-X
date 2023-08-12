@@ -1,7 +1,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: istio-pods
+  name: {{ .Values.appName }}-{{ .Values.environment }}-pods
   namespace: observability
   labels:
     release: kube-prometheus-stack # Required to be scraped by Prometheus server

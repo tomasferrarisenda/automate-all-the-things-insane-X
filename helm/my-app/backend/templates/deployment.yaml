@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
-        sidecar.istio.io/inject: "false" # BORRAR UNA VEZ Q SEPAMOS COMO INTERACTURAS LOS SERVICIOS A TRAVES DE LA SERVICE MESH
+        # sidecar.istio.io/inject: "false" # BORRAR UNA VEZ Q SEPAMOS COMO INTERACTURAS LOS SERVICIOS A TRAVES DE LA SERVICE MESH
         {{- range $key, $value := .Values.deployment.labels }}
         {{ $key }}: {{ $value | quote }}
         {{- end }}

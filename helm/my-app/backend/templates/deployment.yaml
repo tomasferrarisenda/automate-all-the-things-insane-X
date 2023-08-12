@@ -7,12 +7,16 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
-      version: v{{ .Values.deployment.image.tag }} # This label is necessary for Istio canary deployments
+      {{- range $key, $value := .Values.deployment.labels }}
+      {{ $key }}: {{ $value | quote }}
+      {{- end }}
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
-        version: v{{ .Values.deployment.image.tag }} # This label is necessary for Istio canary deployments
+        {{- range $key, $value := .Values.deployment.labels }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
     spec:
       containers:
         - name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}

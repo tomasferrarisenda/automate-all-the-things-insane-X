@@ -1,7 +1,7 @@
 cr:
   create: true
   auth:
-    strategy: ""
+    strategy: "anonymous"
   spec:
     external_services:
       prometheus:

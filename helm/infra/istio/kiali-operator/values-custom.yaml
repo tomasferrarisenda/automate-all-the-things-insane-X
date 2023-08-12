@@ -1,8 +1,8 @@
 cr:
   create: true
-  auth:
-    strategy: "anonymous"
   spec:
+    auth:
+      strategy: "anonymous"
     external_services:
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.observability:9090/"

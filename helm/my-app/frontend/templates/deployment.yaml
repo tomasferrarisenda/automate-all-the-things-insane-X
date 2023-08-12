@@ -7,12 +7,16 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}-{{ .Values.environment }}
-      istio: monitor # MOVER A VALUES!!!!!!
+      {{- range $key, $value := .Values.ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+      {{- end }}
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}-{{ .Values.environment }}
-        istio: monitor # MOVER A VALUES!!!!!!
+        {{- range $key, $value := .Values.ingress.annotations }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
     spec:
       containers:
         - name: {{ .Values.appName }}-{{ .Values.environment }}

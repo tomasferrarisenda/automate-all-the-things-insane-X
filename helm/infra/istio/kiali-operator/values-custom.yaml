@@ -7,6 +7,9 @@ cr:
       grafana:
         enabled: true
         in_cluster_url: 'http://grafana.observability:3000/'
+  # deployment:
+  #   ingress:
+  #     enabled: true
 
 ingress:
   annotations: {    

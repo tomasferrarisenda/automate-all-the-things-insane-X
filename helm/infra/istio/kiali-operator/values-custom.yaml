@@ -1,2 +1,7 @@
 cr:
   create: true
+
+spec:
+  deployment:
+    ingress:
+      enabled: true

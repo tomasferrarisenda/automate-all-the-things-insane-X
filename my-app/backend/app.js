@@ -23,6 +23,7 @@ async function getAndIncrementVisitorCount() {
     return count;
   } catch (error) {
     console.error("Error retrieving visitor count:", error);
+    return { error: "Error retrieving visitor count", originalError: error };
     throw error;
   }
 }

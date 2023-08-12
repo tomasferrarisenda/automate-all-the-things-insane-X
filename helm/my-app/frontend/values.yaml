@@ -1,9 +1,9 @@
-metricsServer: http://kube-prometheus-stack-prometheus.observability:9090 # URL:port.namespace
-
-
 appName: mocha-frontend # This value was modified by the initial-setup python script
 
 deployment:
+  labels: {    
+    istio: monitor
+  }
   image:
     repository: tferrari92/mocha-frontend # This value was modified by the initial-setup python script
 

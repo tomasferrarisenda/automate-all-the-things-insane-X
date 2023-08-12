@@ -12,6 +12,7 @@ spec:
       - {{ .Values.appName }}-{{ .Values.environment }}
   selector:
     matchLabels:
+      app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
       istio: monitor
   podMetricsEndpoints:
     - port: http-envoy-prom

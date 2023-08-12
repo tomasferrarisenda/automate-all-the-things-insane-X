@@ -2,14 +2,14 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: {{ .Values.appName }}-{{ .Values.environment }}-pods
+  name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-pods
   namespace: observability
   labels:
     release: kube-prometheus-stack # Required to be scraped by Prometheus server
 spec:
   namespaceSelector:
     matchNames:
-      - mocha-dev # SOLUCIONAR ESTOOOOO
+      - {{ .Values.appName }}-{{ .Values.environment }} # SOLUCIONAR ESTOOOOO
   selector:
     matchLabels:
       istio: monitor

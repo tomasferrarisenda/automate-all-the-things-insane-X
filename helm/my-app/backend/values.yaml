@@ -1,16 +1,10 @@
-# appName: mocha # This value was modified by the initial-setup python script
+appName: mocha # This value was modified by the initial-setup python script
 
-# service: backend
-
-# deployment:
-#   labels: {    
-#     # istio: monitor
-#   }
-#   image:
-#     repository: tferrari92/mocha-backend # This value was modified by the initial-setup python script
-
-appName: mocha-backend # This value was modified by the initial-setup python script
+service: backend
 
 deployment:
+  labels: {    
+    istio: monitor # This label is used by the PodMonitor
+  }
   image:
     repository: tferrari92/mocha-backend # This value was modified by the initial-setup python script

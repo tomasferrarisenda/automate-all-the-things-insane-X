@@ -7,14 +7,14 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}-{{ .Values.environment }}
-      {{- range $key, $value := .Values.ingress.annotations }}
+      {{- range $key, $value := .Values.deployment.labels }}
       {{ $key }}: {{ $value | quote }}
       {{- end }}
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}-{{ .Values.environment }}
-        {{- range $key, $value := .Values.ingress.annotations }}
+        {{- range $key, $value := .Values.deployment.labels }}
         {{ $key }}: {{ $value | quote }}
         {{- end }}
     spec:

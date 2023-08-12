@@ -9,7 +9,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-      - {{ .Values.appName }}-{{ .Values.environment }} # SOLUCIONAR ESTOOOOO
+      - {{ .Values.appName }}-{{ .Values.environment }}
   selector:
     matchLabels:
       istio: monitor

@@ -18,8 +18,7 @@ spec:
     targetPort: 80
     # Istio gateways (optional)
     gateways:
-    - {{ .Values.appName }}-{{ .Values.environment }}-gateway
-    # - mocha-front-gateway.mocha-dev.svc.cluster.local # QUE PIJA VA ACA?????????????????
+    - {{ .Values.appName }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace
     # Istio virtual service host names (optional)
     hosts:
     - "*"

@@ -7,14 +7,12 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}-{{ .Values.environment }}
-      #version: v{{ .Values.deployment.image.tag }} # This label is necessary for Istio canary deployments
       istio: monitor # MOVER A VALUES!!!!!!
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}-{{ .Values.environment }}
         istio: monitor # MOVER A VALUES!!!!!!
-        #version: v{{ .Values.deployment.image.tag }} # This label is necessary for Istio canary deployments
     spec:
       containers:
         - name: {{ .Values.appName }}-{{ .Values.environment }}

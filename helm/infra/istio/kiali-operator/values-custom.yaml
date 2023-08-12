@@ -1,10 +1,12 @@
 cr:
   create: true
-
-spec:
-  external_services:
-    prometheus:
-      url: "http://kube-prometheus-stack.observability:9090/"
+  spec:
+    external_services:
+      prometheus:
+        url: "http://kube-prometheus-stack.observability:9090/"
+      grafana:
+        enabled: true
+        in_cluster_url: 'http://grafana.observability:3000/'
 
 ingress:
   annotations: {    

@@ -1,8 +1,8 @@
-# We creare a service to be watched by the service monitor
+# We create a service to be watched by the service monitor
 apiVersion: v1
 kind: Service
 metadata:
-  name: istio-gateway-service
+  name: istio-gw
   namespace: service-mesh
   labels:
     app: gateway

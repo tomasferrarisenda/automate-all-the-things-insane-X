@@ -1,3 +1,4 @@
+# We create a PodMonitor so that Prometheus can monitor the pods. PodMonitors and ServiceMonitors must be deployed in the same namespace as Prometheus
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:

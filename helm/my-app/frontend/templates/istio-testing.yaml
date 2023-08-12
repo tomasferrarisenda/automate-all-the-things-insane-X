@@ -79,31 +79,7 @@
 #             host: mocha-frontend-dev-service # Host is the name of the service associated with the deployments
 #             subset: v582
 #           weight: 0
----
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
-metadata:
-  name: mocha-front-gateway
-  namespace: mocha-dev
-spec:
-  selector:
-    istio: gateway
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - mocha-dev.tferrari.com # Istio Gateway service external IP
-    # - port:
-    #     number: 443
-    #     name: https
-    #     protocol: HTTPS
-    #   hosts:
-    #     - mocha-dev.tferrari.com
-    #   tls:
-    #     credentialName: mocha-dev-tferrari-com-crt
-    #     mode: SIMPLE
+
 ---
 # apiVersion: networking.istio.io/v1beta1
 # kind: VirtualService

@@ -102,20 +102,7 @@
 
 
 
-# We creare a service to be watched by the service monitor
+
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: gateway-prom
-  namespace: service-mesh
-  labels:
-    app: gateway
-spec:
-  ports:
-    - name: metrics
-      port: 15090
-  selector: # Labels of the gateway pod
-    app: istio-gateway 
-    istio: gateway
+
  

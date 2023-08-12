@@ -1,14 +1,14 @@
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
-  name: mocha-front-dev-canary
-  namespace: mocha-dev
+  name: {{ .Values.appName }}-{{ .Values.environment }}-canary
+  # namespace: mocha-dev
 spec:
   # Deployment reference
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: mocha-frontend-dev-deployment
+    name: {{ .Values.appName }}-{{ .Values.environment }}-deployment
   # The maximum time in seconds for the canary deployment to make progress before it is rollback (default 600s)
   progressDeadlineSeconds: 60
   service:

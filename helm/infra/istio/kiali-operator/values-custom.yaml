@@ -2,7 +2,7 @@ cr:
   create: true
   spec:
     auth:
-      strategy: "anonymous"
+      strategy: "anonymous" # Don't require password to log in
     external_services:
       prometheus:
         url: "http://kube-prometheus-stack-prometheus.observability:9090/"

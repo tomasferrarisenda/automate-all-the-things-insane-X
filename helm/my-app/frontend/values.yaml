@@ -1,4 +1,6 @@
-appName: mocha-frontend # This value was modified by the initial-setup python script
+appName: mocha # This value was modified by the initial-setup python script
+
+service: frontend
 
 deployment:
   labels: {    

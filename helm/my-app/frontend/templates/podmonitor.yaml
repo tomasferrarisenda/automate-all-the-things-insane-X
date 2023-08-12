@@ -9,7 +9,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-      - mocha-dev
+      - mocha-dev # SOLUCIONAR ESTOOOOO
   selector:
     matchLabels:
       istio: monitor

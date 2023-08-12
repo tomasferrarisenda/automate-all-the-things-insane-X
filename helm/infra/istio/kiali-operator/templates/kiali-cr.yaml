@@ -17,13 +17,12 @@ metadata:
     {{- toYaml .Values.cr.annotations | nindent 4 }}
     {{- end }}
 spec:
-  external_services:
-    prometheus:
-      url: "http://kube-prometheus-stack.observability:9090/"
-    grafana:
-      enabled: true
-      # Grafana service name is "grafana" and is in the "telemetry" namespace.
-      in_cluster_url: 'http://grafana.observability:3000/'
+  # external_services:
+  #   prometheus:
+  #     url: "http://kube-prometheus-stack.observability:9090/"
+  #   grafana:
+  #     enabled: true
+  #     in_cluster_url: 'http://grafana.observability:3000/'
   {{- toYaml .Values.cr.spec | nindent 2 }}
 ...
 {{ end }}

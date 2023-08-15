@@ -18,8 +18,8 @@ configmap:
         }
     
         location /api {
-            # proxy_pass http://mocha-backend-dev-service:3000/; # This value was modified by the initial-setup python script
-            proxy_pass http://mocha-backend-dev-service/; # With service mesh we don't need to specify the port
+            proxy_pass http://mocha-backend-dev-service:3000/; # This value was modified by the initial-setup python script
+            # proxy_pass http://mocha-backend-dev-service/; # With service mesh we don't need to specify the port
         }
         
         error_page   500 502 503 504  /50x.html;

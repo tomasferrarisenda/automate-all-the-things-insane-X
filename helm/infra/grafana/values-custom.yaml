@@ -57,6 +57,8 @@ dashboards:
       file: dashboards/controller-manager.json
     etcd:
       file: dashboards/etcd.json
+    flagger:
+      file: dashboards/flagger.json
     grafana-overview:
       file: dashboards/grafana-overview.json
     istio:

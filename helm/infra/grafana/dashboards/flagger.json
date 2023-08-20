@@ -8,6 +8,8 @@
   "hideControls": false,
   "id": null,
   "links": [],
+  "refresh": "5s",
+  "schemaVersion": 38,
   "liveNow": false,
   "panels": [
     {
@@ -524,8 +526,6 @@
       }
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {

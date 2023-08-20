@@ -3,7 +3,7 @@ environment: dev
 deployment:
   image:
     tag: 699
-  replicas: 1
+  replicas: 2
 
 configmap: 
   nginxConf: |-

@@ -558,11 +558,6 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "myapp-primary",
-          "value": "myapp-primary"
-        },
         "datasource": "$datasource",
         "definition": "",
         "hide": 0,
@@ -582,11 +577,6 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": true,
-          "text": "myapp",
-          "value": "myapp"
-        },
         "datasource": "$datasource",
         "definition": "",
         "hide": 0,

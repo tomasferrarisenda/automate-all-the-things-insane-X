@@ -2,7 +2,7 @@ environment: prod
 
 deployment:
   image:
-    tag: 694
+    tag: 695
   replicas: 3
 
 # configmap: 

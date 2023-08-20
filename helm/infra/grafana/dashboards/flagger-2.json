@@ -111,7 +111,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": "null"
+          "value": null
         }
       ],
       "valueName": "current"
@@ -193,7 +193,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": "null"
+          "value": null
         }
       ],
       "valueName": "avg"
@@ -275,7 +275,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": "null"
+          "value": null
         }
       ],
       "valueName": "current"
@@ -357,7 +357,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": "null"
+          "value": null
         }
       ],
       "valueName": "current"

@@ -1637,8 +1637,6 @@
         "useTags": false
       },
       {
-        "allValue": null,
-        "current": null,
         "datasource": "$datasource",
         "definition": "",
         "hide": 0,

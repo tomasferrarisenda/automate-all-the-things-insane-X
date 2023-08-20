@@ -699,8 +699,8 @@
     ]
   },
   "timezone": "",
-  "title": "Istio Canary",
-  "uid": "flagger-istio",
+  "title": "Istio Canary 2",
+  "uid": "flagger-istio-2",
   "version": 1,
   "weekStart": ""
 }

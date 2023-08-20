@@ -648,5 +648,4 @@
   "title": "Istio Canary",
   "uid": "flagger-istio",
   "version": 1,
-  "weekStart": ""
 }

@@ -75,7 +75,7 @@ spec:
     #     metadata:
     #       type: bash
     #       cmd: "curl http://orders-canary:3003/v1/orders | grep deliveryType"
-      - name: load-test
+      - name: load-test-get
         url: http://flagger-loadtester.service-mesh/
         timeout: 5s
         metadata:

@@ -95,7 +95,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[30s])), 0.001)",
+          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[40s])), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -178,7 +178,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\",response_code!~\"5.*\"}[30s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[30s]))",
+          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\",response_code!~\"5.*\"}[40s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[40s]))",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "B"
@@ -259,7 +259,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[30s])), 0.001)",
+          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[40s])), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -342,7 +342,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\",response_code!~\"5.*\"}[30s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[30s]))",
+          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\",response_code!~\"5.*\"}[40s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[40s]))",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "B"
@@ -1218,7 +1218,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$primary\", reporter=\"destination\"}[30s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$primary\", reporter=\"destination\"}[40s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1227,7 +1227,7 @@
           "step": 2
         },
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$primary\", reporter=\"destination\"}[30s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$primary\", reporter=\"destination\"}[40s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1317,7 +1317,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$canary\", reporter=\"destination\"}[30s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$canary\", reporter=\"destination\"}[40s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1326,7 +1326,7 @@
           "step": 2
         },
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$canary\", reporter=\"destination\"}[30s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", destination_workload_namespace=~\"$namespace\", destination_workload=~\"$canary\", reporter=\"destination\"}[40s])) by (source_workload, source_workload_namespace, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1416,7 +1416,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$primary\", reporter=\"source\"}[30s])) by (destination_service, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$primary\", reporter=\"source\"}[40s])) by (destination_service, response_code), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ destination_service }} : {{ response_code }} (🔐mTLS)",
@@ -1424,7 +1424,7 @@
           "step": 2
         },
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$primary\", reporter=\"source\"}[30s])) by (destination_service, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$primary\", reporter=\"source\"}[40s])) by (destination_service, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1514,7 +1514,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$canary\", reporter=\"source\"}[30s])) by (destination_service, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$canary\", reporter=\"source\"}[40s])) by (destination_service, response_code), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ destination_service }} : {{ response_code }} (🔐mTLS)",
@@ -1522,7 +1522,7 @@
           "step": 2
         },
         {
-          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$canary\", reporter=\"source\"}[30s])) by (destination_service, response_code), 0.001)",
+          "expr": "round(sum(irate(istio_requests_total{connection_security_policy!=\"mutual_tls\", source_workload_namespace=~\"$namespace\", source_workload=~\"$canary\", reporter=\"source\"}[40s])) by (destination_service, response_code), 0.001)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1681,7 +1681,7 @@
     ]
   },
   "timezone": "",
-  "title": "Istio Canary 2",
-  "uid": "flagger-istio-2",
+  "title": "Istio Canary",
+  "uid": "flagger-istio",
   "version": 3
 }

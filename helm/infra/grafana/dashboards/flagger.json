@@ -647,5 +647,5 @@
   "timezone": "",
   "title": "Istio Canary",
   "uid": "flagger-istio",
-  "version": 1,
+  "version": 1
 }

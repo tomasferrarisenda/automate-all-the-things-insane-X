@@ -44,7 +44,7 @@ spec:
     # Max traffic percentage routed to canary
     maxWeight: 60
     # Canary increment step
-    stepWeight: 20
+    stepWeight: 10
     metrics:
     # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     - name: latency
@@ -67,7 +67,7 @@ spec:
     #     max: 250
     #   interval: 30s
     # # Testing (optional)
-    # webhooks:
+    webhooks:
     #   - name: acceptance-test
     #     type: pre-rollout
     #     url: http://flagger-loadtester.ecommerce/
@@ -75,8 +75,8 @@ spec:
     #     metadata:
     #       type: bash
     #       cmd: "curl http://orders-canary:3003/v1/orders | grep deliveryType"
-    #   - name: load-test
-    #     url: http://flagger-loadtester.ecommerce/
-    #     timeout: 5s
-    #     metadata:
-    #       cmd: "hey -z 1m -q 10 -c 2 http://orders-canary.ecommerce:3003/v1/orders"
+      - name: load-test
+        url: http://loadtester.flagger/
+        timeout: 5s
+        metadata:
+          cmd: "hey -z 1m -q 10 -c 2 http://{{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari/"

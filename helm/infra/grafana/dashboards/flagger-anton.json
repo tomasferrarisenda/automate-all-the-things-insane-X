@@ -75,7 +75,7 @@
       "targets": [
         {
           "datasource": "$datasource",
-          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[30s])), 0.001)",
+          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[$__rate_interval])), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -153,7 +153,7 @@
         {
           "datasource": "$datasource",
           "editorMode": "code",
-          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\",response_code!~\"[4-5].*\"}[30s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[30s]))",
+          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\",response_code!~\"[4-5].*\"}[$__rate_interval])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$primary\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 1,
           "range": true,
@@ -226,7 +226,7 @@
       "targets": [
         {
           "datasource": "$datasource",
-          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[30s])), 0.001)",
+          "expr": "round(sum(rate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[$__rate_interval])), 0.001)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -304,7 +304,7 @@
         {
           "datasource": "$datasource",
           "editorMode": "code",
-          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\",response_code!~\"[4-5].*\"}[30s])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[30s]))",
+          "expr": "sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\",response_code!~\"[4-5].*\"}[$__rate_interval])) / sum(irate(istio_requests_total{reporter=\"destination\",destination_workload_namespace=~\"$namespace\",destination_workload=~\"$canary\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 1,
           "range": true,
@@ -605,7 +605,7 @@
     "refresh_intervals": [
       "5s",
       "10s",
-      "30s",
+      "$__rate_interval",
       "1m",
       "5m",
       "15m",
@@ -627,7 +627,7 @@
     ]
   },
   "timezone": "",
-  "title": "Istio Canary",
-  "uid": "flagger-istio",
+  "title": "Istio Canary Anton",
+  "uid": "flagger-istio-anton",
   "version": 1
 }

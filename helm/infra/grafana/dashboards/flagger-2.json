@@ -1680,6 +1680,6 @@
   },
   "timezone": "",
   "title": "Istio Canary 2",
-  "uid": "flagger-istio",
+  "uid": "flagger-istio-2",
   "version": 3
 }

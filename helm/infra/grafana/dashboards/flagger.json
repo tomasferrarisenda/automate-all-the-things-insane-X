@@ -86,10 +86,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PEB814BE3CA3B78C0"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "color": {

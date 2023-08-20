@@ -111,7 +111,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": null
+          "value": "null"
         }
       ],
       "valueName": "current"
@@ -193,7 +193,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": null
+          "value": "null"
         }
       ],
       "valueName": "avg"
@@ -275,7 +275,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": null
+          "value": "null"
         }
       ],
       "valueName": "current"
@@ -357,7 +357,7 @@
         {
           "op": "=",
           "text": "N/A",
-          "value": null
+          "value": "null"
         }
       ],
       "valueName": "current"
@@ -1593,8 +1593,6 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
-        "current": null,
        "datasource": "$datasource",
         "definition": "",
         "hide": 0,
@@ -1609,14 +1607,11 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
-        "current": null,
         "datasource": "$datasource",
         "definition": "",
         "hide": 0,
@@ -1631,7 +1626,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false

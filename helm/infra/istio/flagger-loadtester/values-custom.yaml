@@ -1,0 +1,3 @@
+cmd:
+  timeout: 1h
+  namespaceRegexp: ''

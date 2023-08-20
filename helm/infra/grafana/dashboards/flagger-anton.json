@@ -605,7 +605,7 @@
     "refresh_intervals": [
       "5s",
       "10s",
-      "$__rate_interval",
+      "30s",
       "1m",
       "5m",
       "15m",

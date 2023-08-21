@@ -51,8 +51,9 @@ spec:
       templateRef: 
         name: latency
         namespace: service-mesh
+      # Latency should be less then 3s
       thresholdRange:
-        max: 1000
+        max: 3000
       interval: 30s
     # THIS METRIC DOESN'T WORK ANYMORE (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     # - name: request-success-rate

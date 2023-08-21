@@ -1,23 +1,15 @@
 {
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
+  "__inputs": [],
+  "__requires": [],
+  "annotations": { "list": [] },
   "editable": false,
   "gnetId": null,
-  "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1549736611069,
+  "graphTooltip": 1,
+  "hideControls": false,
+  "id": null,
   "links": [],
+  "refresh": "5s",
+  "schemaVersion": 16,
   "panels": [
     {
       "content": "<div class=\"dashboard-header text-center\">\n<span>RED: $canary.$namespace</span>\n</div>",
@@ -1575,8 +1567,6 @@
       }
     }
   ],
-  "refresh": "5s",
-  "schemaVersion": 16,
   "style": "dark",
   "tags": ["istio"],
   "templating": {
@@ -1593,7 +1583,7 @@
         "type": "datasource"
       },
       {
-       "datasource": "$datasource",
+        "datasource": "$datasource",
         "definition": "",
         "hide": 0,
         "includeAll": false,

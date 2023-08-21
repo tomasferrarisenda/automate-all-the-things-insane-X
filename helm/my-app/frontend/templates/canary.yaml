@@ -46,7 +46,7 @@ spec:
     # Canary increment step
     stepWeight: 10
     metrics:
-    # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES -> https://github.com/<your-username>/automate-all-the-things-insane/blob/main/helm/infra/istio/flagger/templates/custom-templates/metrictemplate.yaml) (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
+    # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES -> https://github.com/<your-username>/automate-all-the-things-insane/blob/main/helm/infra/istio/flagger/templates/custom-templates/metrictemplate.yaml (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     - name: latency
       templateRef: 
         name: latency
@@ -55,11 +55,11 @@ spec:
         max: 1000
       interval: 1m
     # THIS METRIC DOESN'T WORK ANYMORE (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
-    # - name: request-success-rate
-    #   # Minimum req success rate (non 5xx responses) percentage
-    #   thresholdRange:
-    #     min: 99
-    #   interval: 1m
+    - name: request-success-rate
+      # Minimum req success rate (non 5xx responses) percentage
+      thresholdRange:
+        min: 99
+      interval: 1m
     # THIS METRIC DOESN'T WORK ANYMORE (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     # - name: request-duration
     #   # Maximum req duration P99 milliseconds

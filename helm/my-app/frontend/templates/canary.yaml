@@ -54,7 +54,7 @@ spec:
       # Latency should be less then 3s
       thresholdRange:
         max: 3000
-      interval: 30s
+      interval: 1m
     # THIS METRIC DOESN'T WORK ANYMORE (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     # - name: request-success-rate
     #   # Minimum req success rate (non 5xx responses) percentage

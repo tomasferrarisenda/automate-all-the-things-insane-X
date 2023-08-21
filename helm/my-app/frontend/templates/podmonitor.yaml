@@ -12,7 +12,7 @@ spec:
       - {{ .Values.appName }}-{{ .Values.environment }}
   selector:
     matchLabels:
-      app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
+      # app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
       # app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-primary
       istio: monitor
   podMetricsEndpoints:

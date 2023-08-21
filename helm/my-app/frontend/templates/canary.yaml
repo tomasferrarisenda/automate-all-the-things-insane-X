@@ -53,7 +53,7 @@ spec:
         namespace: service-mesh
       thresholdRange:
         max: 1000
-      interval: 1m
+      interval: 30s
     # THIS METRIC DOESN'T WORK ANYMORE (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     # - name: request-success-rate
     #   # Minimum req success rate (non 5xx responses) percentage

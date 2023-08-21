@@ -524,7 +524,7 @@
     }
   ],
   "style": "dark",
-  "tags": [istio],
+  "tags": ["istio"],
   "templating": {
     "list": [
       {

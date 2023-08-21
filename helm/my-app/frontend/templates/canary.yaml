@@ -15,7 +15,7 @@ spec:
     # Service port number
     port: 80
     # Container port number or name (optional)
-    targetPort: 80
+    # targetPort: 80
     # Istio gateways (optional)
     gateways:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace
@@ -38,7 +38,7 @@ spec:
     #   retryOn: "gateway-error,connect-failure,refused-stream"
   analysis:
     # Schedule interval (default 60s)
-    interval: 30s
+    interval: 60s
     # Max number of failed metric checks before rollback
     threshold: 3
     # Max traffic percentage routed to canary
@@ -66,8 +66,13 @@ spec:
     #   thresholdRange:
     #     max: 250
     #   interval: 30s
-    # # Testing (optional)
+    # Testing (optional)
     webhooks:
+      - name: load-test-get
+        url: http://flagger-loadtester.service-mesh/
+        timeout: 5s
+        metadata:
+          cmd: "hey -z 1m -q 10 -c 2 http://{{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com/"
     #   - name: acceptance-test
     #     type: pre-rollout
     #     url: http://flagger-loadtester.ecommerce/
@@ -75,8 +80,3 @@ spec:
     #     metadata:
     #       type: bash
     #       cmd: "curl http://orders-canary:3003/v1/orders | grep deliveryType"
-      - name: load-test-get
-        url: http://flagger-loadtester.service-mesh/
-        timeout: 5s
-        metadata:
-          cmd: "hey -z 1m -q 10 -c 2 http://{{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com/"

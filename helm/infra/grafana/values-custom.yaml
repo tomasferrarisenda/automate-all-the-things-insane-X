@@ -59,8 +59,6 @@ dashboards:
       file: dashboards/etcd.json
     flagger:
       file: dashboards/flagger.json
-    flagger-anton:
-      file: dashboards/flagger-anton.json
     grafana-overview:
       file: dashboards/grafana-overview.json
     istio:

@@ -12,7 +12,7 @@ spec:
       - {{ .Values.appName }}-{{ .Values.environment }}
   selector:
     matchLabels:
-      # This will make it monirot the canary (temporary) deployment
+      # This will make it monitor the canary (temporary) deployment
       app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
       istio: monitor
   podMetricsEndpoints:

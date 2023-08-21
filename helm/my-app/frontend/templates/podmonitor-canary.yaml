@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-pods
+  name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-canary-pods
   namespace: observability
   labels:
     release: kube-prometheus-stack # Required to be scraped by Prometheus server

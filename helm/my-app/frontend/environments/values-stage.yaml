@@ -2,7 +2,7 @@ environment: stage
 
 deployment:
   image:
-    tag: 719
+    tag: 721
   replicas: 3
 
 configmap: 

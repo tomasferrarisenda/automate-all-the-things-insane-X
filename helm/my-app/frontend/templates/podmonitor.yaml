@@ -12,7 +12,7 @@ spec:
       - {{ .Values.appName }}-{{ .Values.environment }}
   selector:
     matchLabels:
-      # This will make it monitor the main deployment      
+      # This will make it monitor the primary (main) deployment      
       app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-primary
       istio: monitor
   podMetricsEndpoints:

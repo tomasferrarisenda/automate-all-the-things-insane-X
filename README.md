@@ -20,7 +20,7 @@
 <p title="All The Things" align="center"> <img src="https://i.imgur.com/0iRDtob.jpg"> </p>
 
 # **INSANE EDITION**
-This Hardcore Edition builds upon the [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore).
+This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore).
 
 The new features include:
 

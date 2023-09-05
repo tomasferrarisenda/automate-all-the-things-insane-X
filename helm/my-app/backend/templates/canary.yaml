@@ -2,7 +2,6 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-canary
-  # namespace: mocha-dev
 spec:
   # Deployment reference
   targetRef:

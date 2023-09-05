@@ -8,7 +8,8 @@ spec:
   dnsNames:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com
   issuerRef:
-    name: staging-cluster-issuer
+    name: cluster-issuer
+    # name: staging-cluster-issuer
     # name: production-cluster-issuer
     kind: ClusterIssuer
     group: cert-manager.io

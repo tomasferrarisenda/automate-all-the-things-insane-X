@@ -22,8 +22,7 @@
 # **INSANE EDITION**
 This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore).
 
-The new features include:
-
+### New features:
 - Service mesh with Istio
 - Ingress Gateway with Istio
 - Canary deployments with Flagger
@@ -33,7 +32,6 @@ The new features include:
 <br/>
 
 ### Other editions:
-
 - [Regular Edition](https://github.com/tferrari92/automate-all-the-things)
 - [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)
 

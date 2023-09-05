@@ -32,7 +32,7 @@ The new features include:
 - Cert-Manager (Optional)
 <br/>
 
-## Other editions
+### Other editions:
 
 - [Regular Edition](https://github.com/tferrari92/automate-all-the-things)
 - [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)

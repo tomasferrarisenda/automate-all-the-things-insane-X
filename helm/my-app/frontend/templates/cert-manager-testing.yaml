@@ -30,17 +30,17 @@ spec:
 #         http01:
 #           ingress:
 #             class: istio
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: mocha-dev-tferrari-com
-  namespace: service-mesh
-spec:
-  secretName: {{ .Values.appName }}-{{ .Values.environment }}-tferrari-com-crt
-  dnsNames:
-    - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com
-  issuerRef:
-    name: staging-cluster-issuer
-    kind: ClusterIssuer
-    group: cert-manager.io
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: mocha-dev-tferrari-com
+#   namespace: service-mesh
+# spec:
+#   secretName: {{ .Values.appName }}-{{ .Values.environment }}-tferrari-com-crt
+#   dnsNames:
+#     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com
+#   issuerRef:
+#     name: staging-cluster-issuer
+#     kind: ClusterIssuer
+#     group: cert-manager.io

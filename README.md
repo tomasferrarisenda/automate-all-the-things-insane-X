@@ -29,7 +29,6 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - Flagger Load Tester included
 - Service mesh visualization with Kiali
 - Cert-Manager (Optional)
-<br/>
 
 ### Other editions:
 - [Regular Edition](https://github.com/tferrari92/automate-all-the-things)

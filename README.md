@@ -28,7 +28,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
 - Canary deployments with Flagger
   - Flagger Load Tester included
 - Service mesh visualization with Kiali
-- Cert-Manager (Optional)
+- Cert-Manager (Optional)<br/>
 
 ### Other editions:
 - [Regular Edition](https://github.com/tferrari92/automate-all-the-things)

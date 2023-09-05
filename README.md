@@ -22,10 +22,11 @@
 # **INSANE EDITION**
 
 - Service mesh with Istio
-- Canary deployments with Istio
 - Ingress Gateway with Istio
+- Canary deployments with Flagger
 - Cert-Manager (Optional)
 
+## Also from HARDCORE EDITION
 - ArgoCD is self-managed
 - ArgoCD App of Apps pattern is implemented
 - Observability implementation:

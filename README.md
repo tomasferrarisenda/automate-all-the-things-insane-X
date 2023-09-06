@@ -29,6 +29,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - Flagger Load Tester included
 - Service mesh visualization with Kiali
 - Cert-Manager (Optional)
+- Prometheus Operator
 
 
 ### Versions in order of complexity:

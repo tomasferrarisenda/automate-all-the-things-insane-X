@@ -1,20 +1,15 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  # name: cluster-issuer
   name: production-cluster-issuer
 spec:
   acme:
     # Let’s Encrypt has a strict rate limit on certificates issued, so we use the Staging Let’s Encrypt server for testing, and then we switch to the Production Let’s Encrypt server.
-    # Staging Let’s Encrypt server
-    # server: https://acme-staging-v02.api.letsencrypt.org/directory # Comment when switching to Production
     # Production Let’s Encrypt server
     server: https://acme-v02.api.letsencrypt.org/directory # Uncomment when switching to Production
     privateKeySecretRef:
-      # Reference to Staging secret
-      # name: staging-cluster-issuer # Comment when switching to Production
       # Reference to Production secret
-      name: production-cluster-issuer # Uncomment when switching to Production
+      name: production-cluster-issuer
     solvers:
       - selector: {}
         http01:

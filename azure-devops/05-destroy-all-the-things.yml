@@ -56,7 +56,7 @@ jobs:
         kubectl delete ingress --all --all-namespaces
     displayName: 'Delete Ingresses'
 
-  # Necessary to delete EBS volumes???????????????????????
+  # We also delete all EBS volumes created through Persistent Volumes
   - script: | 
         kubectl delete persistentvolumeclaims --all --all-namespaces
         kubectl delete persistentvolumes --all --all-namespaces

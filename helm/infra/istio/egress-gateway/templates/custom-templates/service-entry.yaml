@@ -1,18 +1,18 @@
-apiVersion: networking.istio.io/v1beta1
-kind: ServiceEntry
-metadata:
-  name: external-elasticsearch-com
-spec:
-  hosts:
-  - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-  exportTo:
-  - "."
-  location: MESH_EXTERNAL
-  resolution: DNS
-  ports:
-  - number: 443
-    name: https
-    protocol: HTTPS
-  - number: 80
-    name: http
-    protocol: HTTP
+# apiVersion: networking.istio.io/v1beta1
+# kind: ServiceEntry
+# metadata:
+#   name: external-elasticsearch-com
+# spec:
+#   hosts:
+#   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#   exportTo:
+#   - "."
+#   location: MESH_EXTERNAL
+#   resolution: DNS
+#   ports:
+#   - number: 443
+#     name: https
+#     protocol: HTTPS
+#   - number: 80
+#     name: http
+#     protocol: HTTP

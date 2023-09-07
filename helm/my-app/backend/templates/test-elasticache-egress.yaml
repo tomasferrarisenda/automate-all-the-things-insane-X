@@ -24,28 +24,28 @@ spec:
   subsets:
   - name: elasticache # Name of ServiceEntry
 ---
-# apiVersion: networking.istio.io/v1alpha3
-# kind: Gateway
-# metadata:
-#   name: istio-elasticache-egressgateway
-# spec:
-#   selector:
-#     istio: egress-gateway # use Istio default gateway implementation
-#   servers:
-#   - port:
-#       number: 6379
-#       name: tcp
-#       protocol: TCP
-#     hosts:
-#     - "*"
-#     tls:
-#       mode: PASSTHROUGH
-#   # - port:
-#   #     number: 80
-#   #     name: rds-port
-#   #     protocol: TCP
-#   #   hosts:
-#   #   - 'host generates traffic over TCP'
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-elasticache-egressgateway
+spec:
+  selector:
+    istio: egress-gateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 6379
+      name: tcp
+      protocol: TCP
+    hosts:
+    - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+    # tls:
+    #   mode: PASSTHROUGH
+  # - port:
+  #     number: 80
+  #     name: rds-port
+  #     protocol: TCP
+  #   hosts:
+  #   - 'host generates traffic over TCP'
 # ---
 # apiVersion: networking.istio.io/v1alpha3
 # kind: VirtualService

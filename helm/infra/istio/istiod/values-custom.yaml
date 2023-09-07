@@ -16,4 +16,4 @@ meshConfig:
   ingressSelector: gateway
   
   outboundTrafficPolicy:
-    mode: REGISTRY_ONLY # Default is ALLOW_ANY. With REGISTRY_ONLY Istio proxy blocks any host without an HTTP service or service entry defined within the mesh.
+    mode: ALLOW_ANY # Default is ALLOW_ANY. With REGISTRY_ONLY Istio proxy blocks any host without an HTTP service or service entry defined within the mesh.

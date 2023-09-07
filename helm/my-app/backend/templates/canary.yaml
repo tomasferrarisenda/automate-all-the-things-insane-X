@@ -72,7 +72,7 @@ spec:
         url: http://flagger-loadtester.service-mesh/
         timeout: 5s
         metadata:
-          cmd: "hey -z 10m -q 10 -c 2 {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment.{{ .Values.appName }}-{{ .Values.environment }}:{{ .Values.port }}"
+          cmd: "hey -z 10m -q 10 -c 2 http://{{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment.{{ .Values.appName }}-{{ .Values.environment }}:{{ .Values.port }}"
     #   - name: acceptance-test
     #     type: pre-rollout
     #     url: http://flagger-loadtester.ecommerce/

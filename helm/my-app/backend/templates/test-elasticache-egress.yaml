@@ -23,7 +23,7 @@ spec:
     - port:
         number: 6379
       tls:
-        mode: SIMPLE # initiates HTTPS when accessing edition.cnn.com
+        mode: SIMPLE
 ---
 # # Routes internal outbound traffic to the egress gateway using Istio's mTLS
 # apiVersion: networking.istio.io/v1alpha3

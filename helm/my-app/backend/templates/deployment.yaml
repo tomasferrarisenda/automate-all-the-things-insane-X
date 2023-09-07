@@ -23,7 +23,7 @@ spec:
         - name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
           image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.port }}
           env:
             - name: REDIS_HOST
               value: {{ .Values.deployment.env.redis_host }} 

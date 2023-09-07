@@ -5,8 +5,8 @@ metadata:
 spec:
   hosts:
   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-  exportTo:
-  - "*"
+  # exportTo:
+  # - "*"
   location: MESH_EXTERNAL
   ports:
   - number: 6379

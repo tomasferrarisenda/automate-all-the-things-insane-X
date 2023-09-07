@@ -40,12 +40,12 @@ spec:
     - "*"
     tls:
       mode: PASSTHROUGH
-  - port:
-      number: 80
-      name: rds-port
-      protocol: TCP
-    hosts:
-    - 'host generates traffic over TCP'
+  # - port:
+  #     number: 80
+  #     name: rds-port
+  #     protocol: TCP
+  #   hosts:
+  #   - 'host generates traffic over TCP'
 # ---
 # apiVersion: networking.istio.io/v1alpha3
 # kind: VirtualService

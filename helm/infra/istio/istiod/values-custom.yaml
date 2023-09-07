@@ -5,11 +5,12 @@ global:
     # https://istio.io/docs/tasks/traffic-management/egress.html#calling-external-services-directly
     # example: includeIPRanges: "172.30.0.0/16,172.20.0.0/16"
     # would only capture egress traffic on those two IP Ranges, all other outbound traffic would be allowed by the sidecar
-    # ESTO ES PARA BY-PASS COMPLETAMENTE ISTIO PARA DETERMINADOS IP. (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
+    # POR DEFAULT ISTIO TIENE DE POLITICA ALLOW ALL, ESTO SIGNIFICA Q LO Q PASA POR LOS ENVOYS TODO ES PERMITIDO, HAY Q ENCONTRAR COMO MODIFICAR ESO
+    # ESTO ES PARA BY-PASS COMPLETAMENTE ISTIO PARA DETERMINADOS IP, NO ES PARA MODIFICAR LA POLITICA DE LOS ENVOYS (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
     includeIPRanges: "*"
     excludeIPRanges: ""
-    includeOutboundPorts: ""
-    excludeOutboundPorts: ""
+    # includeOutboundPorts: ""
+    # excludeOutboundPorts: ""
 
 meshConfig:
   ingressService: istio-gateway

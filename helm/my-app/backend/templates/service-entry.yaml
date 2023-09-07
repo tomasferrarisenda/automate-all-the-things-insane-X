@@ -1,15 +1,15 @@
-# From my understanding, this should only be required when the meshConfig.outboundTrafficPolicy.mode in Istiod values is set to REGISTRY_ONLY
-# But apparently it's necessary to connect to external ElastiCache even if meshConfig.outboundTrafficPolicy.mode is set to ALLOW_ANY, I don't understand why...
-apiVersion: networking.istio.io/v1alpha3
-kind: ServiceEntry
-metadata:
-  name: elasticache
-spec:
-  hosts:
-  - {{ .Values.deployment.env.redis_host }}
-  ports:
-  - number: 6379
-    name: tcp
-    protocol: TCP
-  location: MESH_EXTERNAL
-  resolution: DNS
+# # From my understanding, this should only be required when the meshConfig.outboundTrafficPolicy.mode in Istiod values is set to REGISTRY_ONLY
+# # But apparently it's necessary to connect to external ElastiCache even if meshConfig.outboundTrafficPolicy.mode is set to ALLOW_ANY, I don't understand why...
+# apiVersion: networking.istio.io/v1alpha3
+# kind: ServiceEntry
+# metadata:
+#   name: elasticache
+# spec:
+#   hosts:
+#   - {{ .Values.deployment.env.redis_host }}
+#   ports:
+#   - number: 6379
+#     name: tcp
+#     protocol: TCP
+#   location: MESH_EXTERNAL
+#   resolution: DNS

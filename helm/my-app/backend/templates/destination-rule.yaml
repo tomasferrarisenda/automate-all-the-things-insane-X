@@ -1,0 +1,13 @@
+# This is necessary to originate a TLS connection when connecting to the ElastiCache DB because it is password protected (which requires TLS encryption)
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: elasticache-destinationrule-egress
+spec:
+  host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com # Name of the Istio Egress Gateway service
+  trafficPolicy:
+    portLevelSettings:
+    - port:
+        number: 6379
+      tls:
+        mode: SIMPLE

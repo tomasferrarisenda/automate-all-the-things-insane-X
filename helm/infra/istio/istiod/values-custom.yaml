@@ -7,7 +7,7 @@ global:
     # would only capture egress traffic on those two IP Ranges, all other outbound traffic would
     # be allowed by the sidecar
     includeIPRanges: ""
-    excludeIPRanges: ""
+    excludeIPRanges: "*"
     includeOutboundPorts: ""
     excludeOutboundPorts: ""
 

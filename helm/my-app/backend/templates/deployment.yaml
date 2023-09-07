@@ -25,7 +25,7 @@ spec:
             - containerPort: {{ .Values.port }}
           env:
             - name: REDIS_HOST
-              value: {{ .Values.deployment.env.redis_host }} 
+              value: {{ .Values.redis_host }} 
             - name: REDIS_PASS
               valueFrom:
                 secretKeyRef:

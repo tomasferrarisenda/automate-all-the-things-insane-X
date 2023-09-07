@@ -23,13 +23,19 @@ spec:
     istio: egress-gateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 80
-      name: https-port-for-tls-origination
-      protocol: HTTPS
+      number: 443
+      name: tls
+      protocol: TLS
     hosts:
-    - developers.google.com
+    - "*"
     tls:
-      mode: ISTIO_MUTUAL
+      mode: PASSTHROUGH
+  - port:
+      number: 80
+      name: rds-port
+      protocol: TCP
+    hosts:
+    - 'host generates traffic over TCP'
 ---
 # Routes internal outbound traffic to the egress gateway using Istio's mTLS
 apiVersion: networking.istio.io/v1alpha3
@@ -40,13 +46,6 @@ spec:
   host: istio-egress-gateway.service-mesh.svc.cluster.local
   subsets:
   - name: google
-    trafficPolicy:
-      portLevelSettings:
-      - port:
-          number: 80
-        tls:
-          mode: ISTIO_MUTUAL
-          sni: developers.google.com
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -59,22 +58,24 @@ spec:
   - istio-google-egressgateway
   - mesh
   # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
-  http:
+  tls:
   - match:
     - gateways:
       - mesh # apply to sidecars in the mesh
-      port: 80
+      port: 443
     route:
     - destination:
         host: istio-egress-gateway.service-mesh.svc.cluster.local
         subset: google
         port:
-          number: 80
+          number: 443
   # at the egress gateway, route developers.google.com to the real destination outside the mesh
   - match:
     - gateways:
       - istio-google-egressgateway
-      port: 80
+      port: 443
+      sniHosts:
+      - developers.google.com
     route:
     - destination:
         host: developers.google.com

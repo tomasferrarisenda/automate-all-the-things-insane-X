@@ -13,72 +13,72 @@ spec:
     name: tls
     protocol: TLS
   resolution: DNS
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: istio-google-egressgateway
-spec:
-  selector:
-    istio: egress-gateway # use Istio default gateway implementation
-  servers:
-  - port:
-      number: 443
-      name: tls
-      protocol: TLS
-    hosts:
-    - "*"
-    tls:
-      mode: PASSTHROUGH
-  - port:
-      number: 80
-      name: rds-port
-      protocol: TCP
-    hosts:
-    - 'host generates traffic over TCP'
----
-# Routes internal outbound traffic to the egress gateway using Istio's mTLS
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: egressgateway-for-google
-spec:
-  host: istio-egress-gateway.service-mesh.svc.cluster.local
-  subsets:
-  - name: google
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: direct-google-through-egress-gateway
-spec:
-  hosts:
-  - developers.google.com
-  gateways:
-  - istio-google-egressgateway
-  - mesh
-  # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
-  tls:
-  - match:
-    - gateways:
-      - mesh # apply to sidecars in the mesh
-      port: 443
-    route:
-    - destination:
-        host: istio-egress-gateway.service-mesh.svc.cluster.local
-        subset: google
-        port:
-          number: 443
-  # at the egress gateway, route developers.google.com to the real destination outside the mesh
-  - match:
-    - gateways:
-      - istio-google-egressgateway
-      port: 443
-      sniHosts:
-      - developers.google.com
-    route:
-    - destination:
-        host: developers.google.com
-        port:
-          number: 443
-      weight: 100
+# ---
+# # Routes internal outbound traffic to the egress gateway using Istio's mTLS
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata:
+#   name: egressgateway-for-google
+# spec:
+#   host: istio-egress-gateway.service-mesh.svc.cluster.local
+#   subsets:
+#   - name: google
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: istio-google-egressgateway
+# spec:
+#   selector:
+#     istio: egress-gateway # use Istio default gateway implementation
+#   servers:
+#   - port:
+#       number: 443
+#       name: tls
+#       protocol: TLS
+#     hosts:
+#     - "*"
+#     tls:
+#       mode: PASSTHROUGH
+#   - port:
+#       number: 80
+#       name: rds-port
+#       protocol: TCP
+#     hosts:
+#     - 'host generates traffic over TCP'
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: direct-google-through-egress-gateway
+# spec:
+#   hosts:
+#   - developers.google.com
+#   gateways:
+#   - istio-google-egressgateway
+#   - mesh
+#   # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
+#   tls:
+#   - match:
+#     - gateways:
+#       - mesh # apply to sidecars in the mesh
+#       port: 443
+#     route:
+#     - destination:
+#         host: istio-egress-gateway.service-mesh.svc.cluster.local
+#         subset: google
+#         port:
+#           number: 443
+#   # at the egress gateway, route developers.google.com to the real destination outside the mesh
+#   - match:
+#     - gateways:
+#       - istio-google-egressgateway
+#       port: 443
+#       sniHosts:
+#       - developers.google.com
+#     route:
+#     - destination:
+#         host: developers.google.com
+#         port:
+#           number: 443
+#       weight: 100

@@ -1,3 +1,17 @@
+# apiVersion: networking.istio.io/v1beta1
+# kind: ServiceEntry
+# metadata:
+#   name: external-elasticsearch-com
+# spec:
+#   hosts:
+#   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#   ports:
+#   - number: 6379
+#     name: tcp-redis
+#     protocol: TCP
+#   resolution: DNS
+#   location: MESH_EXTERNAL
+---
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
@@ -14,17 +28,3 @@ spec:
     protocol: HTTP
   resolution: DNS
   location: MESH_EXTERNAL
----
-# apiVersion: networking.istio.io/v1beta1
-# kind: ServiceEntry
-# metadata:
-#   name: external-elasticsearch-com
-# spec:
-#   hosts:
-#   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-#   ports:
-#   - number: 6379
-#     name: tcp-redis
-#     protocol: TCP
-#   resolution: DNS
-#   location: MESH_EXTERNAL

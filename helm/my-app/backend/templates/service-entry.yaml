@@ -1,11 +1,12 @@
 # XXXXXXXXXXXXXXXXXXXXXX This is necessary if the meshConfig.outboundTrafficPolicy.mode in Istiod values is set to REGISTRY_ONLY
+# This is required to connect to external service
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
   name: elasticache
 spec:
   hosts:
-  - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+  - {{ .Values.deployment.env.redis_host }}
   ports:
   - number: 6379
     name: tcp

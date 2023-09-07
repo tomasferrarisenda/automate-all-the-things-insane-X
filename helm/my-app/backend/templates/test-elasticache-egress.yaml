@@ -21,65 +21,72 @@ metadata:
   name: elasticache-destinationrule-egress
 spec:
   host: istio-egress-gateway.service-mesh.svc.cluster.local # Name of the Istio Egress Gateway service
-  subsets:
-  - name: elasticache # Name of ServiceEntry
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: istio-elasticache-egressgateway
-spec:
-  selector:
-    istio: egress-gateway # use Istio default gateway implementation
-  servers:
-  - port:
-      number: 6379
-      name: tcp
-      protocol: TCP
-    hosts:
-    - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-    # tls:
-    #   mode: PASSTHROUGH
-  # - port:
-  #     number: 80
-  #     name: rds-port
-  #     protocol: TCP
-  #   hosts:
-  #   - 'host generates traffic over TCP'
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: direct-elasticache-through-egress-gateway
-spec:
-  hosts:
-  - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-  gateways:
-  - istio-egressgateway
-  - mesh
-  # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
-  tcp:
-  - match:
-    - gateways:
-      - mesh
-      destinationSubnets:
-      - 10.0.160.0/19
-      port: 6379
-    route:
-    - destination:
-        host: istio-egress-gateway.service-mesh.svc.cluster.local
-        subset: elasticache # ServiceEntry name
-        port:
-          number: 6379
-  - match:
-    - gateways:
-      - istio-egressgateway
-      port: 6379
-      # sniHosts:
-      # - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-    route:
-    - destination:
-        host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-        port:
-          number: 6379
-      weight: 100
+  trafficPolicy:
+    portLevelSettings:
+    - port:
+        number: 6379
+      tls:
+        mode: SIMPLE # initiates HTTPS when accessing edition.cnn.com
+  # subsets:
+  # - name: elasticache # Name of ServiceEntry
+  
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: istio-elasticache-egressgateway
+# spec:
+#   selector:
+#     istio: egress-gateway # use Istio default gateway implementation
+#   servers:
+#   - port:
+#       number: 6379
+#       name: tcp
+#       protocol: TCP
+#     hosts:
+#     - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#     # tls:
+#     #   mode: PASSTHROUGH
+#   # - port:
+#   #     number: 80
+#   #     name: rds-port
+#   #     protocol: TCP
+#   #   hosts:
+#   #   - 'host generates traffic over TCP'
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: direct-elasticache-through-egress-gateway
+# spec:
+#   hosts:
+#   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#   gateways:
+#   - istio-egressgateway
+#   - mesh
+#   # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
+#   tcp:
+#   - match:
+#     - gateways:
+#       - mesh
+#       destinationSubnets:
+#       - 10.0.160.0/19
+#       port: 6379
+#     route:
+#     - destination:
+#         host: istio-egress-gateway.service-mesh.svc.cluster.local
+#         subset: elasticache # ServiceEntry name
+#         port:
+#           number: 6379
+#   - match:
+#     - gateways:
+#       - istio-egressgateway
+#       port: 6379
+#       # sniHosts:
+#       # - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#     route:
+#     - destination:
+#         host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#         port:
+#           number: 6379
+#       weight: 100

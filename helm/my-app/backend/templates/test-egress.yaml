@@ -24,28 +24,28 @@ spec:
   subsets:
   - name: google # Name of ServiceEntry
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: istio-egressgateway
-spec:
-  selector:
-    istio: egress-gateway # use Istio default gateway implementation
-  servers:
-  - port:
-      number: 443
-      name: tls
-      protocol: TLS
-    hosts:
-    - "*"
-    tls:
-      mode: PASSTHROUGH
-  # - port:
-  #     number: 80
-  #     name: rds-port
-  #     protocol: TCP
-  #   hosts:
-  #   - 'host generates traffic over TCP'
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: istio-egressgateway
+# spec:
+#   selector:
+#     istio: egress-gateway # use Istio default gateway implementation
+#   servers:
+#   - port:
+#       number: 443
+#       name: tls
+#       protocol: TLS
+#     hosts:
+#     - "*"
+#     tls:
+#       mode: PASSTHROUGH
+#   # - port:
+#   #     number: 80
+#   #     name: rds-port
+#   #     protocol: TCP
+#   #   hosts:
+#   #   - 'host generates traffic over TCP'
 # ---
 # apiVersion: networking.istio.io/v1alpha3
 # kind: VirtualService

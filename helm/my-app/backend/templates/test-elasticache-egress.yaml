@@ -62,7 +62,7 @@ spec:
   - match:
     - gateways:
       - mesh
-     destinationSubnets:
+      destinationSubnets:
       - 10.0.160.0/19
       port: 6379
     route:

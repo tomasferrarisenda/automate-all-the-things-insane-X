@@ -1,4 +1,5 @@
-adminPassword: hola
+# Specify your own password for Grafana UI here
+# adminPassword: 
 
 ingress:
   enabled: true

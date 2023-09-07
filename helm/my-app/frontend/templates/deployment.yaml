@@ -22,7 +22,7 @@ spec:
         - name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
           image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.port }}
           volumeMounts:
             - name: images-configmap
               mountPath: /usr/share/nginx/html/resources

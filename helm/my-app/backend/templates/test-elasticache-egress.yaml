@@ -5,13 +5,11 @@ metadata:
 spec:
   hosts:
   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-  # exportTo:
-  # - "*"
-  location: MESH_EXTERNAL
   ports:
   - number: 6379
     name: tcp
     protocol: TCP
+  location: MESH_EXTERNAL
   resolution: DNS
 ---
 apiVersion: networking.istio.io/v1alpha3

@@ -14,15 +14,15 @@ spec:
     protocol: TLS
   resolution: DNS
 ---
-# # Routes internal outbound traffic to the egress gateway using Istio's mTLS
-# apiVersion: networking.istio.io/v1alpha3
-# kind: DestinationRule
-# metadata:
-#   name: google-destinationrule-egress
-# spec:
-#   host: istio-egress-gateway.service-mesh.svc.cluster.local
-#   subsets:
-#   - name: google # Name of ServiceEntry
+# Routes internal outbound traffic to the egress gateway using Istio's mTLS
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: google-destinationrule-egress
+spec:
+  host: istio-egress-gateway.service-mesh.svc.cluster.local
+  subsets:
+  - name: google # Name of ServiceEntry
 # ---
 # apiVersion: networking.istio.io/v1alpha3
 # kind: Gateway

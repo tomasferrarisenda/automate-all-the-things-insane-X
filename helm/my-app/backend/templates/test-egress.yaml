@@ -1,18 +1,18 @@
-# apiVersion: networking.istio.io/v1alpha3
-# kind: ServiceEntry
-# metadata:
-#   name: google
-# spec:
-#   hosts:
-#   - developers.google.com
-#   ports:
-#   - number: 80
-#     name: http
-#     protocol: HTTP
-#   - number: 443
-#     name: https
-#     protocol: HTTPS
-#   resolution: DNS
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: google
+spec:
+  hosts:
+  - developers.google.com
+  exportTo:
+  - "*"
+  location: MESH_EXTERNAL
+  ports:
+  - number: 443
+    name: tls
+    protocol: TLS
+  resolution: DNS
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway

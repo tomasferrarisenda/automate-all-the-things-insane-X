@@ -15,11 +15,14 @@ global:
 
     # A simple way to exclude all external IPs from being redirected to the sidecar proxy is to set the global.proxy.includeIPRanges configuration option to the IP range or ranges used for internal cluster services. These IP range values depend on the platform where your cluster runs.
     
-    includeIPRanges: "*"
-    excludeIPRanges: ""
+    # includeIPRanges: "*"
+    # excludeIPRanges: ""
     # includeOutboundPorts: ""
     # excludeOutboundPorts: ""
 
 meshConfig:
   ingressService: istio-gateway
   ingressSelector: gateway
+  
+  outboundTrafficPolicy:
+    mode: REGISTRY_ONLY

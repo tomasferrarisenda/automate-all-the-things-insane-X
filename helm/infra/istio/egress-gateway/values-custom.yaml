@@ -5,6 +5,6 @@ service:
   # Egress gateways do not need an external LoadBalancer IP
   type: ClusterIP
 
-labels: {
-  istio: egress-gateway
-}
+# labels: {
+#   istio: egress-gateway
+# }

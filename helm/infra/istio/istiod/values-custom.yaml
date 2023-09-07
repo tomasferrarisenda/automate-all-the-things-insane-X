@@ -25,4 +25,4 @@ meshConfig:
   ingressSelector: gateway
   
   outboundTrafficPolicy:
-    mode: REGISTRY_ONLY
+    mode: "REGISTRY_ONLY"

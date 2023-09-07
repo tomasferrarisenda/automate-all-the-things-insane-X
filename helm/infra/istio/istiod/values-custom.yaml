@@ -1,6 +1,6 @@
 global:
   istioNamespace: service-mesh
-  proxy:
+  # proxy:
     # istio egress capture allowlist
     # https://istio.io/docs/tasks/traffic-management/egress.html#calling-external-services-directly
     # example: includeIPRanges: "172.30.0.0/16,172.20.0.0/16"

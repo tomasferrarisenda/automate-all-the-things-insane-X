@@ -62,8 +62,8 @@ spec:
   - match:
     - gateways:
       - mesh
-      sniHosts:
-      - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+     destinationSubnets:
+      - 10.0.160.0/19
       port: 6379
     route:
     - destination:
@@ -75,8 +75,8 @@ spec:
     - gateways:
       - istio-egressgateway
       port: 6379
-      sniHosts:
-      - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+      # sniHosts:
+      # - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
     route:
     - destination:
         host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com

@@ -20,7 +20,7 @@ metadata:
   name: istio-google-egressgateway
 spec:
   selector:
-    istio: egressgateway # use Istio default gateway implementation
+    istio: egress-gateway # use Istio default gateway implementation
   servers:
   - port:
       number: 80
@@ -37,7 +37,7 @@ kind: DestinationRule
 metadata:
   name: egressgateway-for-google
 spec:
-  host: istio-egressgateway.istio-system.svc.cluster.local
+  host: istio-egress-gateway.service-mesh.svc.cluster.local
   subsets:
   - name: google
     trafficPolicy:
@@ -66,7 +66,7 @@ spec:
       port: 80
     route:
     - destination:
-        host: istio-egressgateway.istio-system.svc.cluster.local
+        host: istio-egress-gateway.service-mesh.svc.cluster.local
         subset: google
         port:
           number: 80

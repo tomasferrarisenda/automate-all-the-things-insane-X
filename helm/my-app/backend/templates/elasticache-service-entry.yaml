@@ -6,7 +6,7 @@ metadata:
   name: elasticache-serviceentry
 spec:
   hosts:
-  - {{ .Values.deployment.env.redis_host }}
+  - {{ .Values.redis_host }}
   ports:
   - number: 6379
     name: tcp

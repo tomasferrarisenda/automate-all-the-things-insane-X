@@ -2,6 +2,8 @@ appName: mocha # This value was modified by the initial-setup python script
 
 service: backend
 
+port: 3000
+
 deployment:
   labels: {    
     istio: monitor # This label is used by the PodMonitor

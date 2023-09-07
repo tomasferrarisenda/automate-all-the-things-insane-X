@@ -5,7 +5,7 @@ global:
     # https://istio.io/docs/tasks/traffic-management/egress.html#calling-external-services-directly
     # example: includeIPRanges: "172.30.0.0/16,172.20.0.0/16"
     # would only capture egress traffic on those two IP Ranges, all other outbound traffic would be allowed by the sidecar
-    # ESTO ES PARA BY-PASS COMPLETAMENTE ISTIO PARA DETERMINADOS IP. NO ES PARA  (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
+    # ESTO ES PARA BY-PASS COMPLETAMENTE ISTIO PARA DETERMINADOS IP. (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
     includeIPRanges: "*"
     excludeIPRanges: ""
     includeOutboundPorts: ""

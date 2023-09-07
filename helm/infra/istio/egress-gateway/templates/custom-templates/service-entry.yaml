@@ -19,6 +19,8 @@ metadata:
 spec:
   hosts:
   - developers.google.com
+  exportTo:
+  - "*"
   ports:
   - number: 443
     name: https

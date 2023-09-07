@@ -2,7 +2,7 @@ environment: dev
 
 deployment:
   image:  
-    tag: 746
+    tag: 750
   replicas: 1
   env:
     redis_host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com # This value was modified by the deploy-infra pipeline

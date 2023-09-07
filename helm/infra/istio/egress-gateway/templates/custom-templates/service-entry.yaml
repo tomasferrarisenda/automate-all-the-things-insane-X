@@ -18,7 +18,7 @@ metadata:
   name: external-google-com
 spec:
   hosts:
-  - google.com
+  - developer.google.com
   ports:
   - number: 443
     name: https

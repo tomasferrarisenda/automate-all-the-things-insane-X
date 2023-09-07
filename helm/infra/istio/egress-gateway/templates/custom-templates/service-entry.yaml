@@ -5,17 +5,17 @@
 # spec:
 #   hosts:
 #   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-#   exportTo:
-#   - "."
-#   location: MESH_EXTERNAL
-#   resolution: DNS
 #   ports:
 #   - number: 6379
-#     name: resp
-#     protocol: RESP
-#   - number: 443
-#     name: https
-#     protocol: HTTPS
-#   - number: 80
-#     name: http
-#     protocol: HTTP
+#     name: tcp-redis
+#     protocol: TCP
+#   resolution: DNS
+#   location: MESH_EXTERNAL
+#   # - number: 443
+#   #   name: https
+#   #   protocol: HTTPS
+#   # - number: 80
+#   #   name: http
+#   #   protocol: HTTP
+#   # exportTo:
+#   # - "."

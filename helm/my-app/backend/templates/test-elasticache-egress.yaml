@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: elasticache
+spec:
+  hosts:
+  - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+  exportTo:
+  - "*"
+  location: MESH_EXTERNAL
+  ports:
+  - number: 6379
+    name: tcp
+    protocol: TCP
+  resolution: DNS
+# ---
+# # Routes internal outbound traffic to the egress gateway using Istio's mTLS
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata:
+#   name: google-destinationrule-egress
+# spec:
+#   host: istio-egress-gateway.service-mesh.svc.cluster.local
+#   subsets:
+#   - name: google # Name of ServiceEntry
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: istio-egressgateway
+# spec:
+#   selector:
+#     istio: egress-gateway # use Istio default gateway implementation
+#   servers:
+#   - port:
+#       number: 443
+#       name: tls
+#       protocol: TLS
+#     hosts:
+#     - "*"
+#     tls:
+#       mode: PASSTHROUGH
+#   # - port:
+#   #     number: 80
+#   #     name: rds-port
+#   #     protocol: TCP
+#   #   hosts:
+#   #   - 'host generates traffic over TCP'
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: direct-https-through-egress-gateway
+# spec:
+#   hosts:
+#   - developers.google.com
+#   gateways:
+#   - istio-egressgateway
+#   - mesh
+#   # route HTTP traffic to developers.google.com through the egress gateway for the entire mesh
+#   tls:
+#   - match:
+#     - gateways:
+#       - mesh
+#       port: 443
+#       sniHosts:
+#       - developers.google.com
+#     route:
+#     - destination:
+#         host: istio-egress-gateway.service-mesh.svc.cluster.local
+#         subset: google # ServiceEntry name
+#         port:
+#           number: 443
+#   - match:
+#     - gateways:
+#       - istio-egressgateway
+#       port: 443
+#       sniHosts:
+#       - developers.google.com
+#     route:
+#     - destination:
+#         host: developers.google.com
+#         port:
+#           number: 443
+#       weight: 100

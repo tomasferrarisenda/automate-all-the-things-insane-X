@@ -2,19 +2,10 @@ global:
   istioNamespace: service-mesh
   # proxy:
     # istio egress capture allowlist
-    # https://istio.io/docs/tasks/traffic-management/egress.html#calling-external-services-directly
-    # example: includeIPRanges: "172.30.0.0/16,172.20.0.0/16"
-    # would only capture egress traffic on those two IP Ranges, all other outbound traffic would be allowed by the sidecar
-    
-    # POR DEFAULT ISTIO TIENE DE POLITICA ALLOW ALL, ESTO SIGNIFICA Q LO Q PASA POR LOS ENVOYS TODO ES PERMITIDO, HAY Q ENCONTRAR COMO MODIFICAR ESO
-    # ESTO ES PARA BY-PASS COMPLETAMENTE ISTIO PARA DETERMINADOS IP, NO ES PARA MODIFICAR LA POLITICA DE LOS ENVOYS (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
-
     # If you want to completely bypass Istio for a specific IP range, you can configure the Envoy sidecars to prevent them from intercepting external requests. To set up the bypass, change either the global.proxy.includeIPRanges or the global.proxy.excludeIPRanges configuration option and update the istio-sidecar-injector configuration map using the kubectl apply command. This can also be configured on a pod by setting corresponding annotations such as traffic.sidecar.istio.io/includeOutboundIPRanges. After updating the istio-sidecar-injector configuration, it affects all future application pod deployments.
-
     # Unlike Envoy passthrough to external services, which uses the ALLOW_ANY traffic policy to instruct the Istio sidecar proxy to passthrough calls to unknown services, this approach completely bypasses the sidecar, essentially disabling all of Istio’s features for the specified IPs. You cannot incrementally add service entries for specific destinations, as you can with the ALLOW_ANY approach. Therefore, this configuration approach is only recommended as a last resort when, for performance or other reasons, external access cannot be configured using the sidecar.
-
     # A simple way to exclude all external IPs from being redirected to the sidecar proxy is to set the global.proxy.includeIPRanges configuration option to the IP range or ranges used for internal cluster services. These IP range values depend on the platform where your cluster runs.
-    
+    # (https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#direct-access-to-external-services)
     # includeIPRanges: "*"
     # excludeIPRanges: ""
     # includeOutboundPorts: ""
@@ -25,4 +16,4 @@ meshConfig:
   ingressSelector: gateway
   
   outboundTrafficPolicy:
-    mode: REGISTRY_ONLY
+    mode: REGISTRY_ONLY # Default is ALLOW_ANY

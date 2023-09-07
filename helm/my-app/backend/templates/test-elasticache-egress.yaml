@@ -1,35 +1,43 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: ServiceEntry
-metadata:
-  name: elasticache
-spec:
-  hosts:
-  - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
-  exportTo:
-  - "*"
-  location: MESH_EXTERNAL
-  ports:
-  - number: 6379
-    name: tcp
-    protocol: TCP
-  resolution: DNS
----
-# Routes internal outbound traffic to the egress gateway using Istio's mTLS
+# apiVersion: networking.istio.io/v1alpha3
+# kind: ServiceEntry
+# metadata:
+#   name: elasticache
+# spec:
+#   hosts:
+#   - master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
+#   exportTo:
+#   - "*"
+#   location: MESH_EXTERNAL
+#   ports:
+#   - number: 6379
+#     name: tcp
+#     protocol: TCP
+#   resolution: DNS
+# ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: elasticache-destinationrule-egress
 spec:
-  host: istio-egress-gateway.service-mesh.svc.cluster.local # Name of the Istio Egress Gateway service
+  host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com # Name of the Istio Egress Gateway service
   trafficPolicy:
     portLevelSettings:
     - port:
-        number: 6379
+        number: 80
       tls:
         mode: SIMPLE # initiates HTTPS when accessing edition.cnn.com
-  # subsets:
-  # - name: elasticache # Name of ServiceEntry
-  
+
+---
+# # Routes internal outbound traffic to the egress gateway using Istio's mTLS
+# apiVersion: networking.istio.io/v1alpha3
+# kind: DestinationRule
+# metadata:
+#   name: elasticache-destinationrule-egress
+# spec:
+#   host: istio-egress-gateway.service-mesh.svc.cluster.local # Name of the Istio Egress Gateway service
+#   subsets:
+#   - name: elasticache # Name of ServiceEntry
+---
 # ---
 # apiVersion: networking.istio.io/v1alpha3
 # kind: Gateway

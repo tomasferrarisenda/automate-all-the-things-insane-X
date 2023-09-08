@@ -6,7 +6,6 @@ deployment:
   image:  
     tag: 764
   replicas: 1
-  env:
 
 secret:
   redis_pass: automate-all-the-things-dev

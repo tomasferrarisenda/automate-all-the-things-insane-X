@@ -43,7 +43,7 @@ spec:
     # Max traffic percentage routed to canary
     maxWeight: 60
     # Canary increment step
-    stepWeight: 10
+    stepWeight: 20
     metrics:
     # WE ARE USING THE "latency" MetricTemplate WE MANUALLY CREATED IN THE CHART TEMPLATES -> https://github.com/<your-username>/automate-all-the-things-insane/blob/main/helm/infra/istio/flagger/templates/custom-templates/metrictemplate.yaml (https://docs.flagger.app/dev/upgrade-guide#istio-telemetry-v2)
     - name: latency

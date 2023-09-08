@@ -5,6 +5,8 @@ deployment:
     tag: 768
   replicas: 1
 
+host: a333fe17557854f4e9b85099a9154bb1-1599068481.us-east-2.elb.amazonaws.com
+
 configmap: 
   nginxConf: |-
     server {

@@ -1,11 +1,11 @@
 environment: stage
 
+redis_host: master.mocha-stage-elascache-rep-group.u0khnz.use2.cache.amazonaws.com # This value was modified by the deploy-infra pipeline
+
 deployment:
   image:
     tag: 764
   replicas: 1
-  env:
-    redis_host: master.mocha-stage-elascache-rep-group.u0khnz.use2.cache.amazonaws.com # This value was modified by the deploy-infra pipeline
 
 secret:
   redis_pass: automate-all-the-things-stage

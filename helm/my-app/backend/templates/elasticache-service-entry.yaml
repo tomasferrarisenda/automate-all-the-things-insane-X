@@ -3,7 +3,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: ServiceEntry
 metadata:
-  name: elasticache-serviceentry
+  name: {{ .Values.environment }}-elasticache-serviceentry
 spec:
   hosts:
   - {{ .Values.redis_host }}

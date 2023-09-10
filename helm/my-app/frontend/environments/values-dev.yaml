@@ -5,8 +5,7 @@ deployment:
     tag: 774
   replicas: 1
 
-# AGREGAR ACA Q SE ACTUALIZE AUTOMATICAMENTE
-host: a97ca5c4d3d2640c097734606cb29c3d-603760543.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
+host: a340ed17deb424f51a0fa5b1466e0a4d-1762122938.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
 
 configmap: 
   nginxConf: |-

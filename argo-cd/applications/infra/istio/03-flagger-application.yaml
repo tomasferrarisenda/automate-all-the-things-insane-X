@@ -14,7 +14,7 @@ spec:
     server: https://kubernetes.default.svc  
   project: service-mesh
   source:
-    path: helm/infra/istio/flagger
+    path: helm/infra/istio-1.19/flagger
     helm:
       valueFiles:
         - values-custom.yaml

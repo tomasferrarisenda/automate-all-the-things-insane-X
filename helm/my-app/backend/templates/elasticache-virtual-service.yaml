@@ -1,13 +1,13 @@
-# # I don't understand why, but if we don't define this Virtual Service, request to the Elasticache DB will be all redirected to a single DB instead of it's proper environment's DB
-# apiVersion: networking.istio.io/v1alpha3
-# kind: VirtualService
-# metadata:
-#   name: {{ .Values.environment }}-elasticache-virtualservice
-# spec:
-#   hosts:
-#     -  {{ .Values.redis_host }}
-#   http:
-#     - route:
-#         - destination:
-#             host:  {{ .Values.redis_host }}
+# I don't understand why, but if we don't define this Virtual Service, request to the Elasticache DB will be all redirected to a single DB instead of it's proper environment's DB
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.environment }}-elasticache-virtualservice
+spec:
+  hosts:
+    -  {{ .Values.redis_host }}
+  http:
+    - route:
+        - destination:
+            host:  {{ .Values.redis_host }}
 

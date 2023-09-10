@@ -70,8 +70,6 @@ steps:
     done
     kubectl get ingress -n argocd $(kubectl get ingress -n argocd | awk 'NR>1{print $1}') -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > argocd-access.txt
     echo "admin" >> argocd-access.txt
-    # PROBANDO SI ES UNA CUESTION DE TIEMPO. BORRAR!
-    # sleep 60
     while [[ $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}") == '' ]]; do
       echo "Secret is not ready. Checking again in 5 seconds..."
       sleep 5
@@ -85,3 +83,28 @@ steps:
     PathtoPublish: 'argocd-access.txt'
     ArtifactName: 'Access'
     publishLocation: 'Container'
+
+# - script: |
+#     while [[ $(kubectl get -n service-mesh service istio-gateway -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do
+#       echo "Istio Gateway is not ready. Checking again in 5 seconds..."
+#       sleep 5
+#     done
+#     kubectl get -n service-mesh service istio-gateway -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > host_dev_endpoint.txt
+#   displayName: 'Save Access'
+
+# - script: |
+#     sed -i "s/host:.*/host: $(cat host_dev_endpoint.txt | tr -d '\n')/g" helm/my-app/frontend/environments/values-dev.yaml
+#     # sed -i "s/host:.*/host: $(cat host_stage_endpoint.txt | tr -d '\n')/g" helm/my-app/frontend/environments/values-stage.yaml
+#     # sed -i "s/host:.*/host: $(cat host_prod_endpoint.txt | tr -d '\n')/g" helm/my-app/frontend/environments/values-prod.yaml
+#   displayName: 'Modify values for each environment'
+#   condition: always()
+
+# - script: |
+#     git pull origin main
+#     git config --global user.email "AzureDevOps@ArgoCDDeployPipeline.com"
+#     git config --global user.name "Azure DevOps - ArgoCD Deploy Pipeline"
+#     git checkout -b main
+#     git add helm/my-app/frontend/environments
+#     git commit -m "Frontend hosts URLs updated by Azure DevOps"
+#     git push --set-upstream origin main
+#   displayName: 'Push changes to GitHub'

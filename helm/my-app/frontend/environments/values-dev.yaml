@@ -5,7 +5,7 @@ deployment:
     tag: 774
   replicas: 1
 
-host: a333fe17557854f4e9b85099a9154bb1-1599068481.us-east-2.elb.amazonaws.com # This value was modified by the deploy-infra pipeline
+host: a1109abd5569b40f084ac95c8146cad4-1793631585.us-east-2.elb.amazonaws.com # This value was modified by the deploy-infra pipeline
 
 configmap: 
   nginxConf: |-

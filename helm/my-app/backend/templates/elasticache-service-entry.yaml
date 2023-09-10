@@ -10,6 +10,6 @@ spec:
   ports:
   - number: 6379
     name: https
-    protocol: HTTPS # With TCP it does't work because it affects all outgoing traffic, also those URLs which are not in the entry (https://github.com/istio/istio/issues/29992)
+    protocol: TCP # With TCP it does't work because it affects all outgoing traffic, also those URLs which are not in the entry (https://github.com/istio/istio/issues/29992)
   location: MESH_EXTERNAL
   resolution: DNS

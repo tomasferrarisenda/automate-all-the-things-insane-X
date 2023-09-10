@@ -5,6 +5,7 @@ deployment:
     tag: 774
   replicas: 1
 
+# AGREGAR ACA Q SE ACTUALIZE AUTOMATICAMENTE
 host: a1109abd5569b40f084ac95c8146cad4-1793631585.us-east-2.elb.amazonaws.com # This value was modified by the deploy-infra pipeline
 
 configmap: 

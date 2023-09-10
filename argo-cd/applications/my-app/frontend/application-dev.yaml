@@ -23,7 +23,5 @@ spec:
     syncOptions:
       - CreateNamespace=true
     managedNamespaceMetadata:
-      # annotations:
-      #   linkerd.io/inject: enabled
       labels:
         istio-injection: enabled

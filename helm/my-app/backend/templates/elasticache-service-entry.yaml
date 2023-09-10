@@ -12,4 +12,4 @@ spec:
     name: tcp
     protocol: TCP
   location: MESH_EXTERNAL
-  resolution: NONE # We use NONE because using DNS creates this issue: https://istio.io/latest/blog/2020/dns-proxy/#external-tcp-services-without-vips 
+  resolution: NONE # We use NONE which is not safe, but using DNS creates this issue: https://istio.io/latest/blog/2020/dns-proxy/#external-tcp-services-without-vips. This is solved in Istio Version 1.8 (https://istio.io/latest/blog/2020/dns-proxy/#automatic-vip-allocation-where-possible)

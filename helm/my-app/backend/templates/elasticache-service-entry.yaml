@@ -9,7 +9,7 @@ spec:
   - {{ .Values.redis_host }}
   ports:
   - number: 6379
-    name: https
-    protocol: HTTPS # With TCP it does't work because it affects all outgoing traffic, also those URLs which are not in the entry (https://github.com/istio/istio/issues/29992)
+    name: tcp
+    protocol: TCP
   location: MESH_EXTERNAL
-  resolution: DNS
+  resolution: NONE # We use NONE because using DNS creates this issue: https://istio.io/latest/blog/2020/dns-proxy/#external-tcp-services-without-vips 

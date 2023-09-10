@@ -6,7 +6,7 @@ deployment:
   replicas: 1
 
 # AGREGAR ACA Q SE ACTUALIZE AUTOMATICAMENTE
-host: http://a97ca5c4d3d2640c097734606cb29c3d-603760543.us-east-2.elb.amazonaws.com/ # This value was modified by the deploy-infra pipeline
+host: a97ca5c4d3d2640c097734606cb29c3d-603760543.us-east-2.elb.amazonaws.com # This value was modified by the deploy-infra pipeline
 
 configmap: 
   nginxConf: |-

@@ -14,7 +14,7 @@ spec:
     server: https://kubernetes.default.svc  
   project: service-mesh
   source:
-    path: helm/infra/istio/flagger-loadtester
+    path: helm/infra/istio-1.19/flagger-loadtester
     helm:
       valueFiles:
         - values-custom.yaml

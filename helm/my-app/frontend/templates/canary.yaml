@@ -12,10 +12,9 @@ spec:
   progressDeadlineSeconds: 60
   service:
     # Service port number
-    port: 8081
-    # port: {{ .Values.port }}
+    port: {{ .Values.port }}
     # Container port number or name (optional)
-    targetPort: 8081
+    # targetPort: 
     # Istio gateways (optional)
     gateways:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace

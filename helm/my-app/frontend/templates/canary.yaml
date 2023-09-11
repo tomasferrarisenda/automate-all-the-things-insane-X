@@ -33,8 +33,10 @@ spec:
           prefix: /{{ .Values.environment }}/
       - uri:
           exact: /{{ .Values.environment }}
+      # - uri:
+      #     regex: '^.*\.(css|js|ico)$' # This will make sure that dependencies are properly loaded
       - uri:
-          regex: '^.*\.(css|js|ico)$' # This will make sure that dependencies are properly loaded
+          prefix: /api # We set up the frontend to send a request to itself on "/api" in order to connect to the backend (you can see it in the nginx.conf), so we need to open "/api" here so it can connect
     # HTTP rewrite (optional)
     rewrite:
       uri: "/" # Here we tell it to redirect the "/dev" to just "/", if we don't the request will reach nginx with "/dev" and it will give us a 404 becuase there is nothing in "/dev"

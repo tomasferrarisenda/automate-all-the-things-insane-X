@@ -31,9 +31,9 @@ spec:
     match:
       - uri:
           prefix: /{{ .Values.environment }}/
-      # - uri:
-      #     prefix: /{{ .Values.environment }}/
-          # exact: /{{ .Values.environment }}
+      - uri:
+          exact: /{{ .Values.environment }}
+          # prefix: /{{ .Values.environment }}/
       # - uri:
       #     regex: '^.*\.(css|js|ico)$' # This will make sure that dependencies are properly loaded
     # HTTP rewrite (optional)

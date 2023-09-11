@@ -11,7 +11,7 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - {{ .Values.host }}/{{ .Values.environment }} # Istio Gateway service external IP
+        - {{ .Values.host }} # Istio Gateway service external IP
         # - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}.tferrari.com # I leave this as an example if you have your own domain
     # - port:
     #     number: 443

@@ -7,3 +7,11 @@ meshConfig:
   
   outboundTrafficPolicy:
     mode: ALLOW_ANY # Default is ALLOW_ANY. With REGISTRY_ONLY Istio proxy blocks any host without an HTTP service or service entry defined within the mesh.
+
+  # This allows us to set the spec.resolution value to DNS instead of NONE in the Service Entry, which makes it much safer.
+  defaultConfig:
+    proxyMetadata:
+      ISTIO_META_DNS_CAPTURE: true
+      ISTIO_META_DNS_AUTO_ALLOCATE: true
+
+  

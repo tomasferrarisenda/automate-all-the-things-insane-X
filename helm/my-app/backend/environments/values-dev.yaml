@@ -4,7 +4,7 @@ redis_host: master.mocha-dev-elascache-rep-group.u0khnz.use2.cache.amazonaws.com
 
 deployment:
   image:  
-    tag: 785
+    tag: 793
   replicas: 1
 
 secret:

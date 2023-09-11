@@ -30,7 +30,8 @@ spec:
     # HTTP match conditions (optional)
     match:
       - uri:
-          prefix: /{{ .Values.environment }}/
+          exact: /{{ .Values.environment }}/
+          # prefix: /{{ .Values.environment }}/
       - uri:
           # exact: /{{ .Values.environment }}
           prefix: /{{ .Values.environment }}

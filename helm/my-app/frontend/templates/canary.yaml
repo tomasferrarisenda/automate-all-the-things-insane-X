@@ -31,6 +31,8 @@ spec:
     match:
       - uri:
           prefix: /{{ .Values.environment }}
+      rewrite:
+        uri: "/"
     # # Istio retry policy (optional)
     # retries:
     #   attempts: 3

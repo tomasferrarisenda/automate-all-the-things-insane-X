@@ -24,7 +24,3 @@ rules:
   resources: ["configmaps"]
   verbs: ["delete"]
 
-# For gateway deployment controller
-- apiGroups: ["coordination.k8s.io"]
-  resources: ["leases"]
-  verbs: ["get", "update", "patch", "create"]

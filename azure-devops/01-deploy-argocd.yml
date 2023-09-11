@@ -84,27 +84,27 @@ steps:
     ArtifactName: 'Access'
     publishLocation: 'Container'
 
-- script: |
-    while [[ $(kubectl -n observability get ingress grafana -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do
-      echo "Ingress is not ready. Checking again in 5 seconds..."
-      sleep 5
-    done
-    kubectl get ingress -n observability grafana -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > grafana-access.txt
-    echo "admin" >> grafana-access.txt
-    while [[ $(kubectl get secret -n observability grafana -o jsonpath="{.data.admin-password}") == '' ]]; do
-      echo "Secret is not ready. Checking again in 5 seconds..."
-      sleep 5
-    done
-    echo $(kubectl -n observability get secret grafana -o jsonpath="{.data.admin-password}" | base64 -d) >> grafana-access.txt
-  displayName: 'Save Access'
+# - script: |
+#     while [[ $(kubectl -n observability get ingress grafana -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do
+#       echo "Ingress is not ready. Checking again in 5 seconds..."
+#       sleep 5
+#     done
+#     kubectl get ingress -n observability grafana -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > grafana-access.txt
+#     echo "admin" >> grafana-access.txt
+#     while [[ $(kubectl get secret -n observability grafana -o jsonpath="{.data.admin-password}") == '' ]]; do
+#       echo "Secret is not ready. Checking again in 5 seconds..."
+#       sleep 5
+#     done
+#     echo $(kubectl -n observability get secret grafana -o jsonpath="{.data.admin-password}" | base64 -d) >> grafana-access.txt
+#   displayName: 'Save Access'
 
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Export Access'
-  inputs:
-    PathtoPublish: 'grafana-access.txt'
-    ArtifactName: 'Access'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Export Access'
+#   inputs:
+#     PathtoPublish: 'grafana-access.txt'
+#     ArtifactName: 'Access'
+#     publishLocation: 'Container'
 
 - script: |
     while [[ $(kubectl get -n service-mesh service istio-gateway -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do

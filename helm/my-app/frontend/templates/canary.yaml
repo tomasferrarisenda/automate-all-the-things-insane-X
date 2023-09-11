@@ -38,7 +38,7 @@ spec:
       #     regex: '^.*\.(css|js|ico)$' # This will make sure that dependencies are properly loaded
     # HTTP rewrite (optional)
     rewrite:
-      uri: "/" # Here we tell it to redirect the "/dev" to just "/", if we don't the request will reach nginx with "/dev" and it will give us a 404 becuase there is nothing in "/dev"
+      uri: " " # Here we tell it to redirect the "/dev" to just "/", if we don't the request will reach nginx with "/dev" and it will give us a 404 becuase there is nothing in "/dev"
     # # Istio retry policy (optional)
     # retries:
     #   attempts: 3

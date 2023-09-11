@@ -14,7 +14,7 @@ spec:
     # Service port number
     port: {{ .Values.port }}
     # Container port number or name (optional)
-    targetPort: {{ .Values.port }}
+    targetPort: 8080
     # Istio gateways (optional)
     gateways:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace

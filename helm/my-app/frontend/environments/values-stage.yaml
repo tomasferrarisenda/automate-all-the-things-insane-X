@@ -2,7 +2,7 @@ environment: stage
 
 deployment:
   image:
-    tag: 813
+    tag: 814
   replicas: 3
 
 # COMO HAGO PARA QUE SE DIRECCIONE A DISTIONS AMBIENTES SI TENGO UN SOLO URL DEL ISTIO GATEWAY?????

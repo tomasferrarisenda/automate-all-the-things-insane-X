@@ -2,7 +2,7 @@ environment: dev
 
 deployment:
   image:
-    tag: 819
+    tag: 820
   replicas: 1
 
 host: a0f19bfdd75c74c2e9a333268c35c94e-398015314.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline

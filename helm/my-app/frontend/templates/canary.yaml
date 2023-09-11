@@ -32,8 +32,8 @@ spec:
       - uri:
           # exact: /{{ .Values.environment }}/
           prefix: /{{ .Values.environment }}/
-      - uri:
-          exact: /{{ .Values.environment }}
+      # - uri:
+      #     exact: /{{ .Values.environment }}
           # prefix: /{{ .Values.environment }}
       # - uri:
       #     prefix: /api # We set up the frontend to send a request to itself on "/api" in order to connect to the backend (you can see it in the nginx.conf), so we need to open "/api" here so it can connect

@@ -20,8 +20,8 @@ spec:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace
     # Istio virtual service host names (optional)
     hosts:
-    # - "*" # ACA DEFINO CADA AMBIENTE?????????????????????????? PROBAR LO DE ACA ABAJO!!!!!!!!!!!!!
-    - {{ .Values.host }}
+    - "*" # ACA DEFINO CADA AMBIENTE?????????????????????????? PROBAR LO DE ACA ABAJO!!!!!!!!!!!!!
+    # - {{ .Values.host }}
     # # Istio traffic policy (optional)
     # trafficPolicy:
     #   tls:

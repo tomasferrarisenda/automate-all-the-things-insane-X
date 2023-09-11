@@ -28,9 +28,9 @@ spec:
     #     # Use ISTIO_MUTUAL when mTLS is enabled
     #     mode: DISABLE
     # HTTP match conditions (optional)
-    # match:
-    #   - uri:
-    #       prefix: /
+    match:
+      - uri:
+          prefix: /{{ .Values.environment }}
     # # Istio retry policy (optional)
     # retries:
     #   attempts: 3

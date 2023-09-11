@@ -115,9 +115,9 @@ steps:
   displayName: 'Save Access'
 
 - script: |
-    sed -i "s/host:.*/host: $(cat host_dev_endpoint.txt | tr -d '\n') # This value was modified by the deploy-infra pipeline/g" helm/my-app/frontend/environments/values-dev.yaml
-    # sed -i "s/host:.*/host: $(cat host_stage_endpoint.txt | tr -d '\n') # This value was modified by the deploy-infra pipeline/g" helm/my-app/frontend/environments/values-stage.yaml
-    # sed -i "s/host:.*/host: $(cat host_prod_endpoint.txt | tr -d '\n') # This value was modified by the deploy-infra pipeline/g" helm/my-app/frontend/environments/values-prod.yaml
+    sed -i "s/host:.*/host: $(cat host_dev_endpoint.txt | tr -d '\n') # This value was modified by the deploy-argocd pipeline/g" helm/my-app/frontend/environments/values-dev.yaml
+    # sed -i "s/host:.*/host: $(cat host_stage_endpoint.txt | tr -d '\n') # This value was modified by the deploy-argocd pipeline/g" helm/my-app/frontend/environments/values-stage.yaml
+    # sed -i "s/host:.*/host: $(cat host_prod_endpoint.txt | tr -d '\n') # This value was modified by the deploy-argocd pipeline/g" helm/my-app/frontend/environments/values-prod.yaml
   displayName: 'Modify values for each environment'
   condition: always()
 

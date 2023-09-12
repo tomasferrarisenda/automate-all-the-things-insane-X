@@ -20,19 +20,20 @@
 <p title="All The Things" align="center"> <img src="https://i.imgur.com/0iRDtob.jpg"> </p>
 
 # **INSANE EDITION**
+
 This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore).
 
 ### New features:
-- Prometheus Operator
+
+- Prometheus Operator: We'll be needing to use PodMonitors and ServiceMonitors, so we'll deploy the kube-prometheus-stack Helm chart which also includes the Prometheus operator, instead of just plain Prometheus.
 - Service mesh with Istio
 - Ingress Gateway with Istio
 - Canary deployments with Flagger
   - Flagger Load Tester included
 - Service mesh visualization with Kiali
-- Cert-Manager (Optional)
-
 
 ### Versions in order of complexity:
+
 1. [Regular Edition](https://github.com/tferrari92/automate-all-the-things)
 2. [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)
 3. [Insane Edition](https://github.com/tferrari92/automate-all-the-things-insane)
@@ -54,7 +55,6 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - [Create AWS service connection](#create-aws-service-connection)
   - [Create DockerHub service connection](#create-dockerhub-service-connection)
   - [Create AWS-keys variable group](#create-aws-keys-variable-group)
-  <!-- - [Allow push to GitHub](#allow-pushes-to-github) -->
   - [Create an Azure self-hosted agent](#optional-create-an-azure-self-hosted-agent)
 - [AWS Infrastructure Deployment Pipeline](#aws-infrastructure-deployment-pipeline)
   - [Description](#description)
@@ -62,7 +62,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
 - [ArgoCD Deployment Pipeline](#argocd-deployment-pipeline)
   - [Description](#description-1)
   - [Instructions](#instructions-1)
-- [Observability Deployment Pipeline](#observability-deployment-pipeline)
+- [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-2)
   - [Instructions](#instructions-2)
 - [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
@@ -165,17 +165,17 @@ Let's begin...
 
 In order to turn this whole deployment into your own thing, we need to do some initial setup:
 
-1. Fork this repo. Keep the repository name "automate-all-the-things-hardcore".
+1. Fork this repo. Keep the repository name "automate-all-the-things-insane".
 1. Clone the repo from your fork:
 
 ```bash
-git clone https://github.com/<your-github-username>/automate-all-the-things-hardcore.git
+git clone https://github.com/<your-github-username>/automate-all-the-things-insane.git
 ```
 
 2. Move into the directory:
 
 ```bash
-cd automate-all-the-things-hardcore
+cd automate-all-the-things-insane
 ```
 
 2. Run the initial setup script. Come back when you are done:
@@ -357,7 +357,7 @@ Oh and lastly... it will export an artifact with the instructions on how to conn
 3. Click on "Create Pipeline".
 4. Select "Github".
 5. You might get a screen to authorize Azure Pipelines to access your GitHub account, if so, go ahead and click the green button.
-6. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
+6. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 7. You might also get a screen to install the Azure Pipelines App on your GitHub account, if so, go ahead and click the green button and follow the instructions.
 8. Select "Existing Azure Pipelines YAML file".
 9. Under "Branch" select "main" and under "Path" select "/azure-devops/00-deploy-infra.yml". Click "Continue".
@@ -404,7 +404,7 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 1. Go to "Pipelines" under "Pipelines" on the left side menu.
 2. Click on "New pipeline".
 3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
+4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
 6. Under "Branch" select "main" and under "Path" select "/azure-devops/01-deploy-argocd.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
@@ -420,37 +420,31 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 <br/>
 <br/>
 
-# OBSERVABILITY DEPLOYMENT PIPELINE
+# Kubernetes Tools Management
 
-## Description
+Let's talk how we're meant to manage the installation, customization and uninstallation of Kubernetes tools from now on.
 
-This pipeline is just overdoing it tbh. Since we're now using [ArgoCD's App of Apps pattern](https://youtu.be/2pvGL0zqf9o), the real procedure to deploy any new service in the cluster would be as follows:
+In the previos version ([Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)) of this guide, I had you deploy the observability tools through an "Observability Deployment" pipeline. What this pipeline did, we'll be doing manually from now on.
 
-1. Create the helm chart for the new service.
-2. Save it under the [helm directory](helm).
-3. Create an ArgoCD application.yaml for the new service that watches the appropiate directory. You can see the application yamls under the [argocd applications directory](argo-cd/applications) for reference.
-4. Save the new application.yaml under the [argo-cd/applications directory](argo-cd/applications).
+If you haven't figured it out yet, let me explain how the system works:<br>
+ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yamls it finds there. These application.yaml point to their corresponding Helm chart in the [helm directory](helm).<br>
+When we want to add a new Kubernetes tool to our cluster, for example Jenkins, we'll do the following:
 
-That's it! As soon as ArgoCD pulls the changes on the repo, our new service will be automatically deployed. Assuming your helm chart is correct, everything should work as intended.
+1. Download the Helm chart.
+2. Copy the chart to the [helm/infra directory](helm/infra)
+3. Create a values-custom.yaml where we'll specify our custom values. We never touch the original values file.
+4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there.
+5. Our chart is ready. We'll now create an application.yaml for it.
+6. Copy any of the existing application.yamls and make the required changes. These changes will be on metadata.name, spec.source.path and, depending on what you are deploying, also on spec.destination.namespace and spec.project.
+7. Save this new application.yaml in the [argo-cd/applications/infra directory](argo-cd/applications/infra).
 
-What this pipeline does is just uncommenting the contents of the alreday existing application.yaml's for [Prometheus](argo-cd/applications/infra/prometheus-application.yaml), [Loki](argo-cd/applications/infra/loki-stack-application.yaml) and [Grafana](argo-cd/applications/infra/grafana-application.yaml) and then providing the access information to Grafana UI as an artifact.
+That's it! Now you just need to wait. When Argo sees the new application.yaml it will deploy it automatically.<br>
+If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the content of the custom-templates directory.<br>
+If you want to remove the tool from your cluster, just delete the application.yaml you created and wait.
 
 <br/>
 
 ## Instructions
-
-1. Go to "Pipelines" under "Pipelines" on the left side menu.
-2. Click on "New pipeline".
-3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
-5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-deploy-observability.yml". Click "Continue".
-7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
-8. Click on "Run".
-9. When it's done, the Grafana access file will be exported as an artifact. You'll find it in the pipeline run screen. Download it to see the URL and credentials.
-<p title="Guide" align="center"> <img width="700" src="https://i.imgur.com/UtZyCCe.png"> </p>
-
-10. You can now access the Grafana UI, where you should find a few dashboards I've already set up for you.
 
 <br/>
 <br/>
@@ -494,7 +488,7 @@ Now, if the infrastrucure team needs to make changes to the cluster resources, t
 1. Go to "Pipelines" under "Pipelines" on the left side menu.
 2. Click on "New pipeline".
 3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
+4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
 6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-build-and-deploy-backend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
@@ -534,7 +528,7 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 1. Go to "Pipelines" under "Pipelines" on the left side menu.
 2. Click on "New pipeline".
 3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
+4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
 6. Under "Branch" select "main" and under "Path" select "/azure-devops/04-build-and-deploy-frontend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
@@ -572,7 +566,7 @@ The pipeline will finish with a warning, worry not, this is because the "terrafo
 1. Go to "Pipelines" under "Pipelines" on the left side menu.
 2. Click on "New pipeline".
 3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-hardcore"
+4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
 6. Under "Branch" select "main" and under "Path" select "/azure-devops/05-destroy-all-the-things.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).

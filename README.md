@@ -103,7 +103,7 @@ Here's my attempt at making the world a better place. People in the future will 
 
 ## What we'll be doing
 
-<p title="Diagram" align="center"> <img img width="800" src="https://i.imgur.com/eipX0Mc.jpg"> </p>
+<p title="Diagram" align="center"> <img img width="800" src="https://i.imgur.com/nkCKT7e.jpg"> </p>
 
 <br/>
 

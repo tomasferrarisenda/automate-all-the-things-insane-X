@@ -135,11 +135,10 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 - Observavility visualizations -> Grafana
 - Service Mesh -> Istio
 - Canary Deployments -> Flagger
-- Service Mesh visualization -> Kiali
-- TLS Certification Management -> Cert Manager
+- Service Mesh Visualization -> Kiali
   <br/>
 
-<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/SRlvc6a.png"> </p>
+<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/N43tbUi.png"> </p>
 
 <br/>
 

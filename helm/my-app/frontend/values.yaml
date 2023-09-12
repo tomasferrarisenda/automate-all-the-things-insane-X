@@ -2,6 +2,8 @@ appName: mocha # This value was modified by the initial-setup python script
 
 service: frontend
 
+host:
+
 port: 80
 
 deployment:

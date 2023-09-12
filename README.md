@@ -23,13 +23,13 @@
 This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore).
 
 ### New features:
+- Prometheus Operator
 - Service mesh with Istio
 - Ingress Gateway with Istio
 - Canary deployments with Flagger
   - Flagger Load Tester included
 - Service mesh visualization with Kiali
 - Cert-Manager (Optional)
-- Prometheus Operator
 
 
 ### Versions in order of complexity:

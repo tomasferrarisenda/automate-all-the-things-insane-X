@@ -134,28 +134,40 @@ steps:
   displayName: 'Push changes to GitHub'
 
 - script: |
-    echo "$(cat host_endpoint.txt)/dev/" > dev_frontend_endpoint.txt
-    echo "$(cat host_endpoint.txt)/stage/" > stage_frontend_endpoint.txt
-    echo "$(cat host_endpoint.txt)/" > prod_frontend_endpoint.txt
+    echo "DEV:" > frontend_endpoints.txt
+    echo "$(cat host_endpoint.txt)/dev/" >> frontend_endpoints.txt
+    echo " " >> frontend_endpoints.txt
+    echo "STAGE:" >> frontend_endpoints.txt
+    echo "$(cat host_endpoint.txt)/stage/" >> frontend_endpoints.txt
+    echo " " >> frontend_endpoints.txt
+    echo "PROD:" >> frontend_endpoints.txt
+    echo "$(cat host_endpoint.txt)/" >> frontend_endpoints.txt
   displayName: 'Save Endpoints'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Export Dev Endpoint'
+  displayName: 'Export Frontend Endpoints'
   inputs:
-    PathtoPublish: 'dev_frontend_endpoint.txt'
+    PathtoPublish: 'frontend_endpoints.txt'
     ArtifactName: 'Access'
     publishLocation: 'Container'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Export Stage Endpoint'
-  inputs:
-    PathtoPublish: 'stage_frontend_endpoint.txt'
-    ArtifactName: 'Access'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Export Dev Endpoint'
+#   inputs:
+#     PathtoPublish: 'dev_frontend_endpoint.txt'
+#     ArtifactName: 'Access'
+#     publishLocation: 'Container'
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Export Prod Endpoint'
-  inputs:
-    PathtoPublish: 'prod_frontend_endpoint.txt'
-    ArtifactName: 'Access'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Export Stage Endpoint'
+#   inputs:
+#     PathtoPublish: 'stage_frontend_endpoint.txt'
+#     ArtifactName: 'Access'
+#     publishLocation: 'Container'
+
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Export Prod Endpoint'
+#   inputs:
+#     PathtoPublish: 'prod_frontend_endpoint.txt'
+#     ArtifactName: 'Access'
+#     publishLocation: 'Container'

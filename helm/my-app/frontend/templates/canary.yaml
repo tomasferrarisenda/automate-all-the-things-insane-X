@@ -20,7 +20,6 @@ spec:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway # Name of the gateway. Also .<namespace> if gateway is in a separate namespace
     # Istio virtual service host names (optional)
     hosts:
-    # - "*" # ACA DEFINO CADA AMBIENTE?????????????????????????? PROBAR LO DE ACA ABAJO!!!!!!!!!!!!!
     - {{ .Values.host }}
     # # Istio traffic policy (optional)
     # trafficPolicy:
@@ -32,12 +31,8 @@ spec:
     match:
       - uri:
           prefix: /{{ .Values.environment }}/
-          # exact: /{{ .Values.environment }}/
       # - uri:
       #     exact: /{{ .Values.environment }}
-      #     # prefix: /{{ .Values.environment }}
-      # - uri:
-      #     regex: '^.*\.(css|js|ico)$' # This will make sure that dependencies are properly loaded
     # HTTP rewrite (optional)
     rewrite:
       uri: "/" # Here we tell it to redirect the "/dev" to just "/", if we don't the request will reach nginx with "/dev" and it will give us a 404 becuase there is nothing in "/dev"

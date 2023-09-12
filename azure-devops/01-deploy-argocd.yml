@@ -129,7 +129,7 @@ steps:
     git config --global user.email "AzureDevOps@ArgoCDDeployPipeline.com"
     git config --global user.name "Azure DevOps - ArgoCD Deploy Pipeline"
     git checkout -b main
-    git add helm/my-app/frontend/environments
+    git add helm/my-app/frontend/values.yaml
     git commit -m "Frontend hosts URLs updated by Azure DevOps"
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'

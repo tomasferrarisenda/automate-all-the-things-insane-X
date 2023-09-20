@@ -566,11 +566,23 @@ What you should know is that Istio will now handle communications inside our clu
 
 EXPLICAR KIALI
 
+<br/>
+
+## Other details
+
+In Hardoce edition, we had to add TLS encryption to the request from the backend to the ElastiCache DB. This was because we added passowrd protection to the DB, and AWS forces you to use tls encryption in transit for Elasticache if you want to password protect it. In this case we had to move this tls origination to the service mesh and remove it form the nodejs app. Havieng it in the nodejs created conflict in the communication between the backend container and the envoy container. We moved it to the service mesh throught the use of a serviceentry and a destinationrule
+
+<br/>
+
 ## And what the hell is Flagger?
 
-
-
 <p title="Flagger diagram" align="center"> <img width="700" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
+
+I suspect that the third childless service (no associated deployment) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
+
+
+EXPLICAR LOAD TESTER
+
 
 
 

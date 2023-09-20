@@ -431,14 +431,17 @@ In the previos version ([Hardcore Edition](https://github.com/tferrari92/automat
 
 If you haven't figured it out yet, let me explain how the system works:<br>
 ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yamls it finds there. These application.yaml point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
-When we want to add a new Kubernetes tool to our cluster, for example Jenkins, we'll do the following:
+When we want to add a new Kubernetes tool to our cluster (let's use Jenkins as an example), we'll do the following:
 
 <br/>
 
 ## Instructions
 
-1. Download the Helm chart.
-2. Copy the chart to the [helm/infra directory](helm/infra)
+1. Download the Helm chart. After you added the repo, use this command:
+```bash
+helm pull jenkinsci/jenkins --untar
+```
+2. Copy the chart to the [helm/infra directory](helm/infra).
 3. Create a values-custom.yaml where we'll specify our custom values. We NEVER touch the original values file, we want to have a clear distinction between default configuration and custom configuration.
 4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there. 
 5. Our chart is ready. We'll now create an application.yaml for it.

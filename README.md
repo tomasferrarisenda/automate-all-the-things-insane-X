@@ -589,7 +589,7 @@ EXPLICAR LOAD TESTER
 
 <br/>
 <br/>
-<p title="Anakin" align="center"> <img width="460" src="https://i.imgur.com/V1qgXKM.jpg"> </p>
+<p title="K8S Architecture" align="center"> <img width="460" src="https://i.imgur.com/weNsDia.jpg"> </p>
 <br/>
 <br/>
 

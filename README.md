@@ -72,7 +72,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - [Description](#description-4)
   - [Instructions](#instructions-4)
 - [A Little About Istio](#frontend-service-build--deploy-pipeline)
-  - [And What The Hell is Flagger?](#description-4)
+  - [And what the hell is Flagger?](#description-4)
 - [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
   - [Description](#description-5)
   - [Instructions](#instructions-5)
@@ -562,10 +562,15 @@ As you may have noticed, the infrastructure diagram has been updated since the H
 
 But what does this mean??? Well, as I've said in the past, I'm not going to explain in full detail what Istio is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
 
-What you should know is that 
+What you should know is that Istio will now handle communications inside our cluster, this (as Nana explains... go watch that) brings a lot of benefits. CANARY Y GATEWAY
 
-## And What The Hell is Flagger?
+EXPLICAR KIALI
 
+## And what the hell is Flagger?
+
+
+
+<p title="Flagger diagram" align="center"> <img width="700" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
 
 

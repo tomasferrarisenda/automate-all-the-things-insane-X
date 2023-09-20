@@ -72,6 +72,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - [Description](#description-4)
   - [Instructions](#instructions-4)
 - [A Little About Istio](#frontend-service-build--deploy-pipeline)
+  - [And What The Hell is Flagger?](#description-4)
 - [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
   - [Description](#description-5)
   - [Instructions](#instructions-5)
@@ -554,6 +555,19 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 <p title="Anakin" align="center"> <img width="460" src="https://i.imgur.com/V1qgXKM.jpg"> </p>
 <br/>
 <br/>
+
+# A LITTLE ABOUT ISTIO
+
+As you may have noticed, the infrastructure diagram has been updated since the Hardore Edition. That's because we are using Istio Service Mesh now.
+
+But what does this mean??? Well, as I've said in the past, I'm not going to explain in full detail what Istio is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
+
+What you should know is that 
+
+## And What The Hell is Flagger?
+
+
+
 
 # DESTROY ALL THE THINGS PIPELINE
 

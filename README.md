@@ -456,7 +456,7 @@ We can follow this same logic for deploying new my-app services, for example a s
 
 <br/>
 <br/>
-<p title="Gitops Chills" align="center"> <img width="460" src="https://i.imgur.com/kGQUUTw.jpg"> </p>
+<p title="Two buttons" align="center"> <img width="460" src="https://i.imgur.com/Fgo7nnZ.jpg"> </p>
 <br/>
 <br/>
 

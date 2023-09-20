@@ -577,7 +577,7 @@ In Hardoce edition, we had to add TLS encryption to the request from the backend
 
 ## And what the hell is Flagger?
 
-If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary deployment is a pain in the ass. But do you remember what we are all about here? Exactly, automation.
+If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary is a pain in the ass... But do you remember what we are all about here? Exactly, automation.
 
 Flagger will.......................
 

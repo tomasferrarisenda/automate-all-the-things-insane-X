@@ -577,7 +577,7 @@ In Hardoce edition, we had to add TLS encryption to the request from the backend
 
 ## And what the hell is Flagger?
 
-<p title="Flagger diagram" align="center"> <img width="700" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
+<p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
 I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
 

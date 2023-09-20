@@ -69,6 +69,7 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
 - [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
   - [Description](#description-3)
   - [Instructions](#instructions-3)
+- [A Little About Istio](#frontend-service-build--deploy-pipeline)
 - [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
   - [Description](#description-4)
   - [Instructions](#instructions-4)
@@ -420,18 +421,24 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 
 # Kubernetes Tools Management
 
+## Description
+
 Let's talk how we're meant to manage the installation, customization and uninstallation of Kubernetes tools from now on.
 
 In the previos version ([Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)) of this guide, I had you deploy the observability tools through an "Observability Deployment" pipeline. What this pipeline did, we'll be doing manually from now on.
 
 If you haven't figured it out yet, let me explain how the system works:<br>
-ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yamls it finds there. These application.yaml point to their corresponding Helm chart in the [helm directory](helm).<br>
+ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yamls it finds there. These application.yaml point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
 When we want to add a new Kubernetes tool to our cluster, for example Jenkins, we'll do the following:
+
+<br/>
+
+## Instructions
 
 1. Download the Helm chart.
 2. Copy the chart to the [helm/infra directory](helm/infra)
-3. Create a values-custom.yaml where we'll specify our custom values. We never touch the original values file.
-4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there.
+3. Create a values-custom.yaml where we'll specify our custom values. We NEVER touch the original values file, we want to have a clear distinction between default configuration and custom configuration.
+4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there. 
 5. Our chart is ready. We'll now create an application.yaml for it.
 6. Copy any of the existing application.yamls and make the required changes. These changes will be on metadata.name, spec.source.path and, depending on what you are deploying, also on spec.destination.namespace and spec.project.
 7. Save this new application.yaml in the [argo-cd/applications/infra directory](argo-cd/applications/infra).
@@ -440,9 +447,7 @@ That's it! Now you just need to wait. When Argo sees the new application.yaml it
 If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the content of the custom-templates directory.<br>
 If you want to remove the tool from your cluster, just delete the application.yaml you created and wait.
 
-<br/>
-
-## Instructions
+We can follow this same logic for deploying new my-app services, for example a second backend.
 
 <br/>
 <br/>

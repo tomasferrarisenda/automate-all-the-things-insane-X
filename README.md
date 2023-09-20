@@ -72,7 +72,8 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
   - [Description](#description-4)
   - [Instructions](#instructions-4)
 - [A Little About Istio](#frontend-service-build--deploy-pipeline)
-  - [And what the hell is Flagger?](#description-4)
+  - [Other details](#other-details)
+  - [And what the hell is Flagger?](#and-what-the-hell-is-flagger)
 - [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
   - [Description](#description-5)
   - [Instructions](#instructions-5)
@@ -578,13 +579,15 @@ In Hardoce edition, we had to add TLS encryption to the request from the backend
 
 <p title="Flagger diagram" align="center"> <img width="700" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
-I suspect that the third childless service (no associated deployment) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
-
+I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
 
 EXPLICAR LOAD TESTER
 
-
-
+<br/>
+<br/>
+<p title="Anakin" align="center"> <img width="460" src="https://i.imgur.com/V1qgXKM.jpg"> </p>
+<br/>
+<br/>
 
 # DESTROY ALL THE THINGS PIPELINE
 

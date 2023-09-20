@@ -577,6 +577,10 @@ In Hardoce edition, we had to add TLS encryption to the request from the backend
 
 ## And what the hell is Flagger?
 
+If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary deployment is a pain in the ass. But do you remember what we are all about here? Exactly, automation.
+
+Flagger will.......................
+
 <p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
 I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.

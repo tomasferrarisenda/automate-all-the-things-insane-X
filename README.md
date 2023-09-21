@@ -579,7 +579,7 @@ If you've done some research into canary deployments with Istio, you'll know tha
 
 These missing resources YAMLs we were talking about: Services, VirtualServices and DestinationRules, they will automatically created and managed by Flagger.
 
-There's a mystery canary.yaml manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a drawing:
+There's a mystery canary.yaml manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a little drawing:
 
 <p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 

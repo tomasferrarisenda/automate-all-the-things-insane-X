@@ -563,9 +563,29 @@ As you may have noticed, the architecture diagram has been updated since the [Ha
 
 But what does this mean? Well, as I've said in the past, I'm not going to explain in full detail what Istio or service mesh is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
 
-What you should know is that Istio will now handle communications inside our cluster, this (as Nana explains) brings a lot of benefits.
+What you should know is that Istio will now handle communications inside our cluster. This, as Nana explains, brings a lot of benefits, like advanced traffic management capabilities, improved security and great networking observability features, amongst others.
 
-Ingress communications to our cluster will now be handled by the Istio Ingress Gateway.  CANARY Y GATEWAY
+Ingress communications to our cluster will now be handled by the Istio Ingress Gateway instead of a regular Ingress controller as we did before.
+
+But most importantly, Istio will allow us to implement canary deployments. If you don't know what a canary deployment is, [watch this](https://www.youtube.com/watch?v=AWVTKBUnoIg&ab_channel=ByteByteGo).
+
+Istio uses two CRDs (Custom Resource Definitions) to allow us to do this: Virtual Services and Destination Rules. But if you have taken a look into the [my-app helm charts](helm/my-app/), you may have noticed that not only we don't have a service.yaml for our frontend or backend anymore, there's also no virtual-service.yaml nor destination-rule.yaml. So how does this worK?.. that's where Flagger comes in...
+
+<br/>
+
+## And what the hell is Flagger?
+
+If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary is a pain in the ass... But do you remember what we are all about here? Exactly, automation.
+
+These missing resources YAMLs we were talking about: Services, VirtualServices and DestinationRules, they will automatically created and managed by Flagger.
+
+There's a mystery canary.yaml manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a drawing:
+
+<p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
+
+I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
+
+EXPLICAR LOAD TESTER
 
 EXPLICAR KIALI
 
@@ -577,21 +597,6 @@ We have not completely ditched our previous way of accessing the cluster through
 
 Also, in Hardoce edition, we had to add TLS encryption to the request from the backend to the ElastiCache DB. This was because we added password protection to the DB, and AWS forces you to use TLS encryption in transit for Elasticache if you want to password protect it. In this case we had to move this TLS origination to the service mesh and remove it form the backend code. Having it in the NodeJS code created a conflict in the communication between the backend container and the envoy container, so we moved it to the service mesh throught the use of a ServiceEntry and a DestinationRule.
 
-
-
-<br/>
-
-## And what the hell is Flagger?
-
-If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary is a pain in the ass... But do you remember what we are all about here? Exactly, automation.
-
-Flagger will.......................
-
-<p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
-
-I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
-
-EXPLICAR LOAD TESTER
 
 <br/>
 <br/>

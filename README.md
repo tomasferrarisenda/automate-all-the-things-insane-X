@@ -564,15 +564,15 @@ We can follow this same logic for deploying new my-app services, for example for
 
 # A LITTLE ABOUT ISTIO
 
-As you may have noticed, the architecture diagram has been updated since the [Hardore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore). That's because we are using Istio Service Mesh now.
+As you may have noticed, the [architecture diagram](#what-well-be-doing) has been updated since the [Hardore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore). That's because we are using Istio Service Mesh now.
 
 But what does this mean? Well, as I've said in the past, I'm not going to explain in full detail what Istio or service mesh is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
 
-What you should know is that Istio will now handle communications inside our cluster. This, as Nana explains, brings a lot of benefits, like advanced traffic management capabilities, improved security and great networking observability features, amongst others.
+What you should know is that Istio will now handle communications inside our cluster. This, as Nana explains, brings a lot of benefits, like advanced traffic management capabilities, improved security and networking observability features, amongst others.
 
 Ingress communications to our cluster will now be handled by the Istio Ingress Gateway instead of a regular Ingress controller as we did before.
 
-We'll also have Kiali, Istio's native visualization tool to see how our communications are handled in a beautiful live graph.
+We'll also have Kiali, Istio's native visualization tool to see how our communications are handled in a beautiful live graph. You can access by clicking on the little arrow icon the kiali-operator application in ArgoCD's web UI.
 
 But most importantly, Istio will allow us to implement canary deployments. If you don't know what a canary deployment is, [watch this](https://www.youtube.com/watch?v=AWVTKBUnoIg&ab_channel=ByteByteGo).
 
@@ -592,7 +592,7 @@ There's a mystery "canary.yaml" manifest in our [my-app helm charts](helm/my-app
 
 When we deploy a new version of either our frontend or backend, it won't be instantly deployed to our cluster anymore. Flagger will detect the new version and initialize a canary deployment, moving traffic to our new version gradually and making decisions on if incrementing traffic to the new version or stalling it based on specific metrics, eventually ending on a successful deployment of the new version or on a rollback to the previous one.
 
-The "Primary" resources are the ones that are currently being used and the "Canary" ones are the ones that will be used by the new version when we deploy it.
+The "Primary" resources are the ones that are currently being used and the "Canary" ones are the ones that will be used by the potential new version.
 
 If the canary is successful, the new version will be migrated from "Canary" to "Primary". In the diagram there's this third service (the one that's not Primary nor Canary) that I'm not sure what purpose it serves. I suspect that it is there so that in case of a successful canary deployment, it will ensure there is no downtime when migrating the resources from Canary to Primary, but I haven't found a straight answer tbh.
 

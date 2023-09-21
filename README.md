@@ -432,14 +432,14 @@ Let's talk how we're meant to manage the installation, customization and uninsta
 In the previos version ([Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)) of this guide, I had you deploy the observability tools through an "Observability Deployment" pipeline. What this pipeline did, we'll be doing manually from now on.
 
 If you haven't figured it out yet, let me explain how the system works:<br>
-ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yamls it finds there. These application.yaml point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
+ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yaml's it finds there. Each of these application.yaml's point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
 When we want to add a new Kubernetes tool to our cluster (let's use Jenkins as an example), we'll do the following:
 
 <br/>
 
 ## Instructions
 
-1. Download the Helm chart. After you added the repo, use this command:
+1. Download the Helm chart: after you added the repo, use this command:
 ```bash
 helm pull jenkinsci/jenkins --untar
 ```
@@ -451,7 +451,7 @@ helm pull jenkinsci/jenkins --untar
 7. Save this new application.yaml in the [argo-cd/applications/infra directory](argo-cd/applications/infra).
 
 That's it! Now you just need to wait. When Argo sees the new application.yaml it will deploy it automatically.<br>
-If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the content of the custom-templates directory.<br>
+If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the contents of the custom-templates directory.<br>
 If you want to remove the tool from your cluster, just delete the application.yaml you created and wait.
 
 We can follow this same logic for deploying new my-app services, for example a second backend.

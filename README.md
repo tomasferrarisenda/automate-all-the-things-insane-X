@@ -585,9 +585,11 @@ There's a mystery "canary.yaml" manifest in our [my-app helm charts](helm/my-app
 
 <p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
-When we deploy a new version of either our frontend or backend, it won't be instantly deployed to our cluster anymore. Flagger will detect the new version and initialize a canary deployment, moving traffic to our new version gradually and making decisions on incrementing traffic to the new version or stalling it based on specific metrics, eventually ending on a successful deployment of the new version or on a rollback to the previous one. 
+When we deploy a new version of either our frontend or backend, it won't be instantly deployed to our cluster anymore. Flagger will detect the new version and initialize a canary deployment, moving traffic to our new version gradually and making decisions on if incrementing traffic to the new version or stalling it based on specific metrics, eventually ending on a successful deployment of the new version or on a rollback to the previous one.
 
-There's this third service (the one that's not primary nor canary) that I'm not sure what purpose it serves. I suspect that it is there so that in case of a successful canary deployment, it will ensure there is no downtime when migrating the canary resources from canary to primary, but I haven't found a straight answer tbh.
+The "Primary" resources are the ones that are currently being used and the "Canary" ones are the ones that will be used by the new version when we deploy it.
+
+If the canary is successful, the new version will be migrated from "Canary" to "Primary". In the diagram there's this third service (the one that's not Primary nor Canary) that I'm not sure what purpose it serves. I suspect that it is there so that in case of a successful canary deployment, it will ensure there is no downtime when migrating the resources from Canary to Primary, but I haven't found a straight answer tbh.
 
 <br/>
 

@@ -577,7 +577,7 @@ Istio uses two CRDs (Custom Resource Definitions) to allow us to do this: Virtua
 
 If you've done some research into canary deployments with Istio, you'll know that that manually orchestrating the canary is a pain in the ass... But do you remember what we are all about here? Exactly, automation.
 
-These missing resources YAMLs we were talking about: Services, VirtualServices and DestinationRules, they will automatically created and managed by Flagger.
+These missing resources YAMLs we were talking about: Services, VirtualServices and DestinationRules, they will be automatically created and managed by Flagger.
 
 There's a mystery canary.yaml manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a little drawing:
 

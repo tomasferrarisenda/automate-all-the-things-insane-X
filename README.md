@@ -593,6 +593,9 @@ The "Primary" resources are the ones that are currently being used and the "Cana
 
 If the canary is successful, the new version will be migrated from "Canary" to "Primary". In the diagram there's this third service (the one that's not Primary nor Canary) that I'm not sure what purpose it serves. I suspect that it is there so that in case of a successful canary deployment, it will ensure there is no downtime when migrating the resources from Canary to Primary, but I haven't found a straight answer tbh.
 
+You can experience the magic of the canary deployment by, for example, changing the background color of the frontend. Once the canary is running you can hit refresh on your browser often and you'll see how it sometimes sends you to the old version (with the old background color) and sometimes to the new (with the new color), gradually sending you more often to the new version until the old one is gone.<br>
+You can also see the specific percentage if you click on the Virtual Service object of the frontend inside ArgoCD's web UI. Just open it and watch how the spec.http.route.weight's in the live manifest change overtime.  
+
 <br/>
 
 ## Other important details

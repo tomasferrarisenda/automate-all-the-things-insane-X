@@ -581,11 +581,13 @@ If you've done some research into canary deployments with Istio, you'll know tha
 
 These missing resources YAMLs we were talking about: Services, VirtualServices and DestinationRules, they will be automatically created and managed by Flagger.
 
-There's a mystery canary.yaml manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a little drawing:
+There's a mystery "canary.yaml" manifest in our [my-app helm charts](helm/my-app/). This is a Flagger CRD. It allows us to define how we want our canary deployments to go down. Flagger will read this manifest and take care of creating the necessary resources and operating them according to what we have defined in this canary.yaml. Let's make a little drawing:
 
 <p title="Flagger diagram" align="center"> <img width="800" src="https://i.imgur.com/HLQ3t5l.jpg"> </p>
 
-I suspect that the third service (the one that's not primary nor canary) exists so that in case the canary deployment is successful, it will ensure there is no downtime when migrating the canary resources from canary to primary.
+When we deploy a new version of either our frontend or backend, it won't be instantly deployed to our cluster anymore. Flagger will detect the new version and initialize a canary deployment, moving traffic to our new version gradually and making decisions on incrementing traffic to the new version or stalling it based on specific metrics, eventually ending on a successful deployment of the new version or on a rollback to the previous one. 
+
+There's this third service (the one that's not primary nor canary) that I'm not sure what purpose it serves. I suspect that it is there so that in case of a successful canary deployment, it will ensure there is no downtime when migrating the canary resources from canary to primary, but I haven't found a straight answer tbh.
 
 <br/>
 

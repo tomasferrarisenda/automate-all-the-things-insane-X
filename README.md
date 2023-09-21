@@ -62,13 +62,13 @@ This Insane Edition builds upon the [Hardcore Edition](https://github.com/tferra
 - [ArgoCD Deployment Pipeline](#argocd-deployment-pipeline)
   - [Description](#description-1)
   - [Instructions](#instructions-1)
-- [Kubernetes Tools Management](#kubernetes-tools-management)
+- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
   - [Description](#description-2)
   - [Instructions](#instructions-2)
-- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
+- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
   - [Description](#description-3)
   - [Instructions](#instructions-3)
-- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
+- [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-4)
   - [Instructions](#instructions-4)
 - [A Little About Istio](#a-little-about-istio)
@@ -418,52 +418,13 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 <p title="Guide" align="center"> <img width="700" src="https://i.imgur.com/UtZyCCe.png"> </p>
 
 10. You can now access the ArgoCD UI, if it's not ready just hit refresh every few seconds. Here you should find all the applications. Three will be under the "argocd" project, these are necessary for ArgoCD self-management.<br>
-You will also see a few other applications related to our new service mesh implementation, we'll explore these later.<br>
-Another 6 applications six will be under the "my-app" project which manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet, we'll take care of that soon. From the other exported artifact, you'll get the URLs for each enviroment's frontend, but don't expect these to work until we have deployed our app.  
+You will also see a few other applications related to our new service mesh implementation, they will be under the "service-mesh" project. We'll explore these later.<br>
+Another six applications will be under the "my-app" project. These manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet, we'll take care of that soon. From the other exported artifact, you'll get the URLs for each enviroment's frontend, but don't expect these to work until we have deployed our app.  
 
 
 <br/>
 <br/>
 <p title="Gitops Chills" align="center"> <img width="460" src="https://i.imgur.com/kGQUUTw.jpg"> </p>
-<br/>
-<br/>
-
-# Kubernetes Tools Management
-
-## Description
-
-Let's talk how we're meant to manage the installation, customization and uninstallation of Kubernetes tools from now on.
-
-In the previos version ([Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore)) of this guide, I had you deploy the observability tools through an "Observability Deployment" pipeline. What this pipeline did, we'll be doing manually from now on.
-
-If you haven't figured it out yet, let me explain how the system works:<br>
-ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yaml's it finds there. Each of these application.yaml's point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
-When we want to add a new Kubernetes tool to our cluster (let's use Jenkins as an example), we'll do the following:
-
-<br/>
-
-## Instructions
-
-1. Download the Helm chart: after you added the repo, use this command:
-```bash
-helm pull jenkinsci/jenkins --untar
-```
-2. Copy the chart to the [helm/infra directory](helm/infra).
-3. Create a values-custom.yaml where we'll specify our custom values. We NEVER touch the original values file, we want to have a clear distinction between default configuration and custom configuration.
-4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there. 
-5. Our chart is ready. We'll now create an application.yaml for it.
-6. Copy any of the existing application.yamls and make the required changes. These changes will be on metadata.name, spec.source.path and, depending on what you are deploying, also on spec.destination.namespace and spec.project.
-7. Save this new application.yaml in the [argo-cd/applications/infra directory](argo-cd/applications/infra).
-
-That's it! Now you just need to wait. When Argo sees the new application.yaml it will deploy it automatically.<br>
-If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the contents of the custom-templates directory.<br>
-If you want to remove the tool from your cluster, just delete the application.yaml you created and wait.
-
-We can follow this same logic for deploying new my-app services, for example a second backend.
-
-<br/>
-<br/>
-<p title="Two buttons" align="center"> <img width="460" src="https://i.imgur.com/Fgo7nnZ.jpg"> </p>
 <br/>
 <br/>
 
@@ -559,6 +520,45 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 <br/>
 <br/>
 <p title="Anakin" align="center"> <img width="460" src="https://i.imgur.com/V1qgXKM.jpg"> </p>
+<br/>
+<br/>
+
+# Kubernetes Tools Management
+
+## Description
+
+Let's talk how we're meant to manage the installation, customization and uninstallation of Kubernetes tools from now on.
+
+In the previos version [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore) of this guide, I had you deploy the observability tools through an "Observability Deployment pipeline". What this pipeline did, we'll be doing manually from now on.
+
+If you haven't figured it out yet, let me explain how the system works:<br>
+ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yaml's it finds there. Each of these application.yaml's point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
+When we want to add a new Kubernetes tool to our cluster (let's use Jenkins as an example), we'll do the following:
+
+<br/>
+
+## Instructions
+
+1. Download the Helm chart: after you added the repo, use this command:
+```bash
+helm pull jenkinsci/jenkins --untar
+```
+2. Copy the chart to the [helm/infra directory](helm/infra).
+3. Create a values-custom.yaml where we'll specify our custom values. We NEVER touch the original values file, we want to have a clear distinction between default configuration and custom configuration.
+4. If we need to add a new manifest, we'll create a directory called custom-templates inside the templates directory in the chart and drop our custom manifest in there. 
+5. Our chart is ready. We'll now create an application.yaml for it.
+6. Copy any of the existing application.yamls and make the required changes. These changes will be on metadata.name, spec.source.path and, depending on what you are deploying, also on spec.destination.namespace and spec.project.
+7. Save this new application.yaml in the [argo-cd/applications/infra directory](argo-cd/applications/infra).
+
+That's it! Now you just need to wait. When Argo sees the new application.yaml it will deploy it automatically.<br>
+If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the contents of the custom-templates directory.<br>
+If you want to remove the tool from your cluster, just delete the application.yaml you created and wait.
+
+We can follow this same logic for deploying new my-app services, for example for a second backend.
+
+<br/>
+<br/>
+<p title="Two buttons" align="center"> <img width="460" src="https://i.imgur.com/Fgo7nnZ.jpg"> </p>
 <br/>
 <br/>
 

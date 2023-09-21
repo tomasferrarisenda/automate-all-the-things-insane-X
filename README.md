@@ -135,7 +135,7 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 - Scripting -> Python
 - Monitoring -> Prometheus
 - Logging -> Loki
-- Observavility visualizations -> Grafana
+- Observavility Visualization -> Grafana
 - Service Mesh -> Istio
 - Canary Deployments -> Flagger
 - Service Mesh Visualization -> Kiali

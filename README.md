@@ -559,11 +559,13 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 
 # A LITTLE ABOUT ISTIO
 
-As you may have noticed, the infrastructure diagram has been updated since the Hardore Edition. That's because we are using Istio Service Mesh now.
+As you may have noticed, the architecture diagram has been updated since the [Hardore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore). That's because we are using Istio Service Mesh now.
 
-But what does this mean??? Well, as I've said in the past, I'm not going to explain in full detail what Istio is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
+But what does this mean? Well, as I've said in the past, I'm not going to explain in full detail what Istio or service mesh is, for that you can watch [this Nana video](https://www.youtube.com/watch?v=16fgzklcF7Y&ab_channel=TechWorldwithNana).
 
-What you should know is that Istio will now handle communications inside our cluster, this (as Nana explains... go watch that) brings a lot of benefits. CANARY Y GATEWAY
+What you should know is that Istio will now handle communications inside our cluster, this (as Nana explains) brings a lot of benefits.
+
+Ingress communications to our cluster will now be handled by the Istio Ingress Gateway.  CANARY Y GATEWAY
 
 EXPLICAR KIALI
 
@@ -571,7 +573,11 @@ EXPLICAR KIALI
 
 ## Other details
 
-In Hardoce edition, we had to add TLS encryption to the request from the backend to the ElastiCache DB. This was because we added passowrd protection to the DB, and AWS forces you to use tls encryption in transit for Elasticache if you want to password protect it. In this case we had to move this tls origination to the service mesh and remove it form the nodejs app. Havieng it in the nodejs created conflict in the communication between the backend container and the envoy container. We moved it to the service mesh throught the use of a serviceentry and a destinationrule
+We have not completely ditched our previous way of accessing the cluster through regular Ingress objects. We're still using it for accessing the web UIs of our infra tools like ArgoCD, Grafana and Kiali. We switched to Istio Ingress Gateway only for the my-app services.
+
+Also, in Hardoce edition, we had to add TLS encryption to the request from the backend to the ElastiCache DB. This was because we added password protection to the DB, and AWS forces you to use TLS encryption in transit for Elasticache if you want to password protect it. In this case we had to move this TLS origination to the service mesh and remove it form the backend code. Having it in the NodeJS code created a conflict in the communication between the backend container and the envoy container, so we moved it to the service mesh throught the use of a ServiceEntry and a DestinationRule.
+
+
 
 <br/>
 

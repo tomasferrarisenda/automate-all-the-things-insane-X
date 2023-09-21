@@ -394,11 +394,13 @@ We won't go into what ArgoCD is, for that you have [this video](https://youtu.be
 This pipeline will use the [ArgoCD Helm Chart](helm/argo-cd/) in our repo to deploy ArgoCD into our EKS.<br>
 The first thing it will do is run the necessary tasks to connect to our the cluster. After this, ArgoCD will be installed, along with it's Ingress.
 
-After this, it will create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm](helm) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm/infra](helm/my-app) and [helm/my-app](helm/my-app) directories simulates what would be our K8S infrastructure repositories would be.
+It will then create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm](helm) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm/infra](helm/my-app) and [helm/my-app](helm/my-app) directories simulates what would be our K8S infrastructure repositories would be.
 
 If you want to know more about Helm, [here's another Nana video](https://youtu.be/-ykwb1d0DXU).
 
-Finally the pipeline will get the ArgoCD web UI URL and admin account password and export them as an artifact. You might need to wait a few seconds for the URL to be active, this is because an AWS Load Balancer takes a little time to be deployed.
+Following up, it will get the Istio Gateway endpoint and put it into the [frontend values file](helm/my-app/frontend/values.yaml). It will also export the endpoint for each environment as an artifact.
+
+Finally the pipeline will get the ArgoCD web UI URL and admin account password and export them as an artifact too. You might need to wait a few seconds for the URL to be active, this is because an AWS Load Balancer takes a little time to be deployed.
 
 <br/>
 
@@ -412,10 +414,13 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 6. Under "Branch" select "main" and under "Path" select "/azure-devops/01-deploy-argocd.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
-9. When it's done, the access file will be exported as an artifact. You'll find it in the pipeline run screen. Download it to see the URL and credentials.
+9. When it's done, the endpoints and ArgoCD access files will be exported as artifacts. You'll find them in the pipeline run screen. Download them to see the ArgoCD URL and credentials, and the frontend endpoints.
 <p title="Guide" align="center"> <img width="700" src="https://i.imgur.com/UtZyCCe.png"> </p>
 
-10. You can now access the ArgoCD UI, if it's not ready just hit refresh every few seconds. Here you should find all the applications. Three will be under the "argocd" project, these are necessary for ArgoCD self-management. Another six will be under the "my-app" project which manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet. Let's take care of that next.
+10. You can now access the ArgoCD UI, if it's not ready just hit refresh every few seconds. Here you should find all the applications. Three will be under the "argocd" project, these are necessary for ArgoCD self-management.<br>
+You will also see a few other applications related to our new service mesh implementation, we'll explore these later.<br>
+Another 6 applications six will be under the "my-app" project which manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet, we'll take care of that soon. From the other exported artifact, you'll get the URLs for each enviroment's frontend, but don't expect these to work until we have deployed our app.  
+
 
 <br/>
 <br/>
@@ -500,7 +505,7 @@ Now, if the infrastrucure team needs to make changes to the cluster resources, t
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-build-and-deploy-backend.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-build-and-deploy-backend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 
@@ -540,7 +545,7 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/04-build-and-deploy-frontend.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-build-and-deploy-frontend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 9. Each deployment stage will export an artifact file with the URL of each environment. You'll find them in the pipeline run screen. Download them to see the URLs.
@@ -629,7 +634,7 @@ The pipeline will finish with a warning, worry not, this is because the "terrafo
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-insane"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/05-destroy-all-the-things.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/04-destroy-all-the-things.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 9. There's two AWS resources that for some reason don't get destroyed: a DHCP Option Set and an Auto Scaling Managed Rule. I'm pretty sure these don't generate any expenses but you can go and delete them manually just in case. I'm really sorry about this... I have brought [shame](https://i.imgur.com/PIm1apF.gifv) upon my family...

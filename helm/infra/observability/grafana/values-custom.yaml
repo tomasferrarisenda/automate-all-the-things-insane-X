@@ -52,14 +52,14 @@ dashboards:
     # Our custom dashboards
     alertmanager-overview:
       file: dashboards/alertmanager-overview.json
-    apiserver:
-      file: dashboards/apiserver.json
-    cluster-total:
-      file: dashboards/cluster-total.json
-    controller-manager:
-      file: dashboards/controller-manager.json
-    etcd:
-      file: dashboards/etcd.json
+    # apiserver:
+    #   file: dashboards/apiserver.json
+    # cluster-total:
+    #   file: dashboards/cluster-total.json
+    # controller-manager:
+    #   file: dashboards/controller-manager.json
+    # etcd:
+    #   file: dashboards/etcd.json
     flagger-canary-status:
       file: dashboards/flagger-canary-status.json
     # grafana-overview:
@@ -68,8 +68,8 @@ dashboards:
       file: dashboards/istio.json
     # k8s-coredns:
     #   file: dashboards/k8s-coredns.json
-    k8s-resources-cluster:
-      file: dashboards/k8s-resources-cluster.json
+    # k8s-resources-cluster:
+    #   file: dashboards/k8s-resources-cluster.json
     # k8s-resources-multicluster:
     #   file: dashboards/k8s-resources-multicluster.json
     # k8s-resources-namespace:
@@ -94,8 +94,8 @@ dashboards:
     #   file: dashboards/node-rsrc-use.json
     # nodes:
     #   file: dashboards/nodes.json
-    # # nodes-darwin:
-    # #   file: dashboards/nodes-darwin.json
+    # nodes-darwin:
+    #   file: dashboards/nodes-darwin.json
     # persistentvolumesusage:
     #   file: dashboards/persistentvolumesusage.json
     # pod-total:

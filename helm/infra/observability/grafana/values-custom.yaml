@@ -24,7 +24,7 @@ datasources:
     - name: Prometheus
       type: prometheus
       url: http://kube-prometheus-stack-prometheus:9090 # Name of the k8s service and it's port
-      # url: http://prometheus-server # Name of the k8s service and it's port. In this case port is 80 which is default
+      # url: http://prometheus-server # We used this in the Hardcore Edition. Name of the k8s service and it's port. In this case port is 80 which is default
       access: proxy
       isDefault: true
     - name: Loki

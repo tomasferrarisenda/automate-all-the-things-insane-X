@@ -60,8 +60,8 @@ dashboards:
       file: dashboards/etcd.json
     flagger-canary-status:
       file: dashboards/flagger-canary-status.json
-    grafana-overview:
-      file: dashboards/grafana-overview.json
+    # grafana-overview:
+    #   file: dashboards/grafana-overview.json
     istio:
       file: dashboards/istio.json
     k8s-coredns:

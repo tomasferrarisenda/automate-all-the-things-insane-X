@@ -58,7 +58,7 @@ dashboards:
       file: dashboards/controller-manager.json
     etcd:
       file: dashboards/etcd.json
-    flaggerCanaryStatus:
+    flagger-canary-status:
       file: dashboards/flagger-canary-status.json
     grafana-overview:
       file: dashboards/grafana-overview.json

@@ -96,8 +96,8 @@ dashboards:
     #   file: dashboards/nodes.json
     # nodes-darwin:
     #   file: dashboards/nodes-darwin.json
-    # persistentvolumesusage:
-    #   file: dashboards/persistentvolumesusage.json
+    # persistent-volumes-usage:
+    #   file: dashboards/persistent-volumes-usage.json
     # pod-total:
     #   file: dashboards/pod-total.json
     # prometheus:

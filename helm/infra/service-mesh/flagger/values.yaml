@@ -5,7 +5,7 @@
 
 image:
   repository: ghcr.io/fluxcd/flagger
-  tag: 1.32.0
+  tag: 1.33.0
   pullPolicy: IfNotPresent
   pullSecret:
 
@@ -26,6 +26,11 @@ metricsServer: "http://prometheus:9090"
 # creates serviceMonitor for monitoring Flagger metrics
 serviceMonitor:
   enabled: false
+  honorLabels: false
+  # Set the namespace the ServiceMonitor should be deployed
+  # namespace: monitoring
+  # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
+  # labels:
 
 # accepted values are kubernetes, istio, linkerd, appmesh, contour, nginx, gloo, skipper, traefik, apisix, osm
 meshProvider: ""

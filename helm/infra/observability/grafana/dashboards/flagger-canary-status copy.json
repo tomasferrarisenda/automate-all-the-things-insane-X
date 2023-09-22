@@ -255,7 +255,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum by (cluster) (flagger_canary_status{exported_namespace=\"$namespace\",name=~\"$canary\",account=~\"$awsaccount\",cluster=~\"$cluster\"})",
+          "expr": "sum by (cluster) (flagger_canary_status{namespace=\"$namespace\",name=~\"$canary\",account=~\"$awsaccount\",cluster=~\"$cluster\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ cluster }}",
@@ -491,7 +491,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "flagger_canary_weight{exported_namespace=~\"$namespace\",workload=~\"$primary\",account=~\"$awsaccount\",cluster=~\"$cluster\"}",
+          "expr": "flagger_canary_weight{namespace=~\"$namespace\",workload=~\"$primary\",account=~\"$awsaccount\",cluster=~\"$cluster\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ cluster }}",
@@ -591,7 +591,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "flagger_canary_weight{exported_namespace=~\"$namespace\",workload=~\"$canary\",account=~\"$awsaccount\",cluster=~\"$cluster\"}",
+          "expr": "flagger_canary_weight{namespace=~\"$namespace\",workload=~\"$canary\",account=~\"$awsaccount\",cluster=~\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,

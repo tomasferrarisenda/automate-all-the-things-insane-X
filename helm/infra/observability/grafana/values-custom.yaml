@@ -74,18 +74,18 @@ dashboards:
     #   file: dashboards/k8s-resources-namespace.json
     # k8s-resources-node:
     #   file: dashboards/k8s-resources-node.json
-    # k8s-resources-pod:
-    #   file: dashboards/k8s-resources-pod.json
-    # k8s-resources-workload:
-    #   file: dashboards/k8s-resources-workload.json
-    # k8s-resources-workloads-namespace:
-    #   file: dashboards/k8s-resources-workloads-namespace.json
-    # kubelet:
-    #   file: dashboards/kubelet.json
-    # namespace-by-pod:
-    #   file: dashboards/namespace-by-pod.json
-    # namespace-by-workload:
-    #   file: dashboards/namespace-by-workload.json
+    k8s-resources-pod:
+      file: dashboards/k8s-resources-pod.json
+    k8s-resources-workload:
+      file: dashboards/k8s-resources-workload.json
+    k8s-resources-workloads-namespace:
+      file: dashboards/k8s-resources-workloads-namespace.json
+    kubelet:
+      file: dashboards/kubelet.json
+    namespace-by-pod:
+      file: dashboards/namespace-by-pod.json
+    namespace-by-workload:
+      file: dashboards/namespace-by-workload.json
     node-cluster-rsrc-use:
       file: dashboards/node-cluster-rsrc-use.json
     node-rsrc-use:

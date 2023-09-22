@@ -1,6 +1,6 @@
 meshProvider: "istio"
 
-metricsServer: "http://kube-prometheus-stack-prometheus.observability:9090/" # URL:port.namespace
+metricsServer: http://kube-prometheus-stack-prometheus.observability:9090/ # URL:port.namespace
 
 # Creates serviceMonitor for monitoring Flagger metrics
 serviceMonitor:

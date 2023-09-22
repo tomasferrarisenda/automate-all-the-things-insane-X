@@ -1147,7 +1147,7 @@
       {
         "allValue": null,
         "datasource": "Prometheus",
-        "definition": "query_result(sum(envoy_cluster_upstream_rq) by (kubernetes_namespace))",
+        "definition": "query_result(avg(kube_deployment_labels{cluster=~\"$cluster\"}) by (namespace))",
         "hide": 0,
         "includeAll": false,
         "label": "Namespace",

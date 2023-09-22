@@ -62,8 +62,8 @@ dashboards:
       file: dashboards/flagger-canary-status.json
     # grafana-overview:
     #   file: dashboards/grafana-overview.json
-    # istio:
-    #   file: dashboards/istio.json
+    istio:
+      file: dashboards/istio.json
     # # k8s-coredns:
     # #   file: dashboards/k8s-coredns.json
     # k8s-resources-cluster:
@@ -96,16 +96,16 @@ dashboards:
     # #   file: dashboards/nodes-darwin.json
     # persistentvolumesusage:
     #   file: dashboards/persistentvolumesusage.json
-    # pod-total:
-    #   file: dashboards/pod-total.json
-    # prometheus:
-    #   file: dashboards/prometheus.json
-    # proxy:
-    #   file: dashboards/proxy.json
-    # scheduler:
-    #   file: dashboards/scheduler.json
-    # workload-total:
-    #   file: dashboards/workload-total.json
+    pod-total:
+      file: dashboards/pod-total.json
+    prometheus:
+      file: dashboards/prometheus.json
+    proxy:
+      file: dashboards/proxy.json
+    scheduler:
+      file: dashboards/scheduler.json
+    workload-total:
+      file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
     # flaggerCanaryStatus: # https://grafana.com/grafana/dashboards/15158-flagger-canary-status/

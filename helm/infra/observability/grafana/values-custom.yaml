@@ -60,8 +60,14 @@ dashboards:
       file: dashboards/controller-manager.json
     etcd:
       file: dashboards/etcd.json
+    flagger-appmesh:
+      file: dashboards/flagger-appmesh.json
     flagger-canary-status:
       file: dashboards/flagger-canary-status.json
+    flagger-envoy:
+      file: dashboards/flagger-envoy.json
+    flagger-istio:
+      file: dashboards/flagger-istio.json
     # grafana-overview:
     #   file: dashboards/grafana-overview.json
     istio:

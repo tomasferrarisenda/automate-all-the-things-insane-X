@@ -58,6 +58,8 @@ dashboards:
       file: dashboards/controller-manager.json
     etcd:
       file: dashboards/etcd.json
+    flaggerCanaryStatus:
+      file: dashboards/flagger-canary-status.json
     grafana-overview:
       file: dashboards/grafana-overview.json
     istio:
@@ -106,9 +108,9 @@ dashboards:
       file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
-    flaggerCanaryStatus: # https://grafana.com/grafana/dashboards/15158-flagger-canary-status/
-      gnetId: 15158
-      revision: 5
+    # flaggerCanaryStatus: # https://grafana.com/grafana/dashboards/15158-flagger-canary-status/
+    #   gnetId: 15158
+    #   revision: 5
     kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
       gnetId: 15757
       revision: 30

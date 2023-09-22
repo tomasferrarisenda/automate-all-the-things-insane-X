@@ -72,10 +72,10 @@ dashboards:
     #   file: dashboards/k8s-resources-cluster.json
     # k8s-resources-multicluster:
     #   file: dashboards/k8s-resources-multicluster.json
-    # k8s-resources-namespace:
-    #   file: dashboards/k8s-resources-namespace.json
-    # k8s-resources-node:
-    #   file: dashboards/k8s-resources-node.json
+    k8s-resources-namespace:
+      file: dashboards/k8s-resources-namespace.json
+    k8s-resources-node:
+      file: dashboards/k8s-resources-node.json
     k8s-resources-pod:
       file: dashboards/k8s-resources-pod.json
     k8s-resources-workload:
@@ -110,9 +110,6 @@ dashboards:
       file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
-    # flaggerCanaryStatus: # https://grafana.com/grafana/dashboards/15158-flagger-canary-status/
-    #   gnetId: 15158
-    #   revision: 5
     kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
       gnetId: 15757
       revision: 30

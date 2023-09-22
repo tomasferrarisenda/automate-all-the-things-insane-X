@@ -14,7 +14,7 @@ spec:
     server: https://kubernetes.default.svc  
   project: service-mesh
   source:
-    path: helm/infra/service-mesh/gateway
+    path: helm/infra/service-mesh/istio-gateway
     helm:
       valueFiles:
         - values-custom.yaml

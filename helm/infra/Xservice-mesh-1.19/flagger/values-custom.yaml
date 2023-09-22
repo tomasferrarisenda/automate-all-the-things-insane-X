@@ -1,3 +1,0 @@
-meshProvider: "istio"
-
-metricsServer: http://kube-prometheus-stack-prometheus.observability:9090 # URL:port.namespace

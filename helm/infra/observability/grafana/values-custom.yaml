@@ -46,6 +46,8 @@ dashboardProviders:
          path: /var/lib/grafana/dashboards/default
 
 dashboards: 
+# Some are commented because if you want to set too many default dashboard you get this error:
+# ConfigMap "grafana-dashboards-default" is invalid: []: Too long: must have at most 1048576 bytes
   default:
     # Our custom dashboards
     alertmanager-overview:

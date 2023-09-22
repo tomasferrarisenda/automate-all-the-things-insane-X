@@ -108,6 +108,9 @@ dashboards:
       file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
+    flaggerCanary: # https://grafana.com/grafana/dashboards/15158-flagger-canary-status/
+      gnetId: 15158
+      revision: 5
     kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
       gnetId: 15757
       revision: 30

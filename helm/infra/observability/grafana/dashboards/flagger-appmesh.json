@@ -1156,7 +1156,7 @@
         "options": [],
         "query": "query_result(sum(envoy_cluster_upstream_rq) by (kubernetes_namespace))",
         "refresh": 1,
-        "regex": "/.*_namespace=\"([^\"]*).*/",
+        "regex": "/.*namespace=\"([^\"]*).*/",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",

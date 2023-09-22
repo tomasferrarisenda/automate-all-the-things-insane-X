@@ -5,3 +5,6 @@ metricsServer: "http://kube-prometheus-stack-prometheus.observability:9090/" # U
 # Creates serviceMonitor for monitoring Flagger metrics
 serviceMonitor:
   enabled: true
+  labels: {    
+    release: kube-prometheus-stack # Required label to be scraped by Prometheus
+  }

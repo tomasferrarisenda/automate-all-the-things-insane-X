@@ -599,8 +599,6 @@ Lastly, if interested, you can see the specific metrics inside Grafana. There's 
 
 <p title="Flagger dashboard" align="center"> <img width="800" src="https://i.imgur.com/JMGNhOJ.png"> </p>
 
-<br/>
-
 ## Other important details
 
 We have not completely ditched our previous way of accessing the cluster through regular Ingress objects. We're still using it for accessing the web UIs of our infra tools like ArgoCD, Grafana and Kiali. We switched to Istio Ingress Gateway only for the my-app services.

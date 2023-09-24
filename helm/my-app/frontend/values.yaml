@@ -2,7 +2,7 @@ appName: mocha # This value was modified by the initial-setup python script
 
 service: frontend
 
-host: a9155a787f5684a1ca10022dcba4ac18-566383291.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
+host: a9e19b8d1dd604b6c90c36291b4190ef-1938623916.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
 
 port: 80
 
